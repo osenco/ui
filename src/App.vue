@@ -40,7 +40,8 @@
         </accordion>
       </col-6>
       <col-6>
-        <btn primary block> Submit </btn>
+        <btn primary round block> Submit Now </btn>
+        <btn primary icon lg float>&raquo;</btn>
       </col-6>
     </row>
   </container>

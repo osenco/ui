@@ -1,5 +1,5 @@
 <template>
-  <button
+  <router-link
     class="btn"
     :class="{
       'btn-primary': primary,
@@ -18,17 +18,15 @@
       'btn-icon': icon,
       'btn-float': float,
     }"
-    @click="clicked"
   >
-    <slot> Sumbit </slot>
-  </button>
+    <slot> Go </slot>
+  </router-link>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  emits: ['click'],
   props: {
     primary: {
       type: Boolean,
@@ -89,14 +87,6 @@ export default defineComponent({
     float: {
       type: Boolean,
       default: false,
-    },
-
-    setup(props, { emit }) {
-      function clicked() {
-        emit('click')
-      }
-
-      return { clicked }
     },
   },
 })

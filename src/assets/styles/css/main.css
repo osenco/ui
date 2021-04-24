@@ -1,4 +1,28 @@
-$red: red;
-$yellow: yellow;
-$blue: blue;
-$green: green;
+.btn-round {
+    border-radius: 9px;
+}
+
+.btn-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.btn-lg.btn-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+}
+
+.btn-sm.btn-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.btn-float {
+    position: fixed;
+    bottom: 3px;
+    right: 2px;
+    z-index: 1000;
+}

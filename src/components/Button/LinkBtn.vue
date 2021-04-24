@@ -2,6 +2,7 @@
   <a
     class="btn"
     :class="{
+      'btn-primary': primary,
       'btn-dark': dark,
       'btn-light': light,
       'btn-info': info,
@@ -12,10 +13,13 @@
       'btn-link': link,
       'btn-sm': sm,
       'btn-lg': lg,
+      'btn-block': block,
+      'btn-round': round,
+      'btn-icon': icon,
+      'btn-float': float,
     }"
-    :href="link"
   >
-    <slot></slot>
+    <slot> Go </slot>
   </a>
 </template>
 
@@ -24,6 +28,10 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   props: {
+    primary: {
+      type: Boolean,
+      default: false,
+    },
     dark: {
       type: Boolean,
       default: false,
@@ -52,6 +60,14 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    link: {
+      type: Boolean,
+      default: false,
+    },
+    round: {
+      type: Boolean,
+      default: false,
+    },
     lg: {
       type: Boolean,
       default: false,
@@ -60,9 +76,17 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    link: {
-      type: String,
-      default: '/',
+    block: {
+      type: Boolean,
+      default: false,
+    },
+    icon: {
+      type: Boolean,
+      default: false,
+    },
+    float: {
+      type: Boolean,
+      default: false,
     },
   },
 })
