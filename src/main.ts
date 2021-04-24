@@ -1,8 +1,8 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import Osen from './index'
+import 'bootstrap'
 
-const app = createApp(App)
+import { createApp } from "vue";
+import App from "./App.vue";
 
-app.use(Osen)
-app.mount('#app')
+import 'bootstrap/dist/css/bootstrap.min.css'
+
+createApp(App).mount("#app");
