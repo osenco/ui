@@ -34,6 +34,8 @@
     "@popperjs/core": "^2.9.2",
     "bootstrap": "^5.0.0-beta3",
     "core-js": "^3.6.5",
+    "css-loader": "^5.2.4",
+    "style-loader": "^2.0.0",
     "vue": "^3.0.0"
   },
   "devDependencies": {
