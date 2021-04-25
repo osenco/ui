@@ -33,13 +33,13 @@ export default defineComponent({
   name: 'AccordionItem',
   props: {
     parent: {
-      default: new Date().getTime(),
+      default: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
     },
     title: {
       type: String,
     },
     id: {
-      default: new Date().getTime(),
+      default: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
     },
     active: {
       type: Boolean,

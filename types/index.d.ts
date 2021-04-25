@@ -1,8 +1,8 @@
 import { DefineComponent, Plugin } from "vue";
 
-declare const vue3ComponentLibrary: Exclude<Plugin["install"], undefined>;
+declare const ui: Exclude<Plugin["install"], undefined>;
 
-export default vue3ComponentLibrary;
+export default ui;
 
-export const TestWorld: Exclude<Plugin["install"], undefined> | DefineComponent;
+export const Container: Exclude<Plugin["install"], undefined> | DefineComponent;
 export const HelloWorld: Exclude<Plugin["install"], undefined> | DefineComponent;

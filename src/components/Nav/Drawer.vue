@@ -45,11 +45,11 @@ export default defineComponent({
   props: {
     id: {
       type: [String, Number],
-      default: new Date().getTime(),
+      default: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
     },
     title: {
       type: String,
-      default: new Date().getTime(),
+      default: "NavBar",
     },
   },
 })

@@ -1,113 +1,135 @@
 <template>
-    <BootstrapIcon
+  <BootstrapIcon
     :icon="name"
     :size="size"
     :variant="variant"
     :animation="animation"
-    />
+  />
 </template>
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import BootstrapIcon from '@dvuckovic/vue-bootstrap-icons';
+import BootstrapIcon from '@dvuckovic/vue3-bootstrap-icons'
 
 export default defineComponent({
-    components: {
-        BootstrapIcon,
+  components: {
+    BootstrapIcon,
+  },
+  props: {
+    name: {
+      type: String,
     },
-    props: {
-        name: {
-            type: String
-        },
-        size: {
-            type: String,
-            default: '2x'
-        },
-        success: {
+    size: {
+      type: String,
+      default: '2x',
+    },
+    success: {
       type: Boolean,
       default: false,
     },
-warning: {
+    warning: {
       type: Boolean,
       default: false,
     },
-danger: {
+    danger: {
       type: Boolean,
       default: false,
     },
-info: {
+    info: {
       type: Boolean,
       default: false,
     },
-primary: {
+    primary: {
       type: Boolean,
       default: false,
     },
-secondary: {
+    secondary: {
       type: Boolean,
       default: false,
     },
-dark: {
+    dark: {
       type: Boolean,
       default: false,
     },
-light: {
+    light: {
       type: Boolean,
       default: false,
     },
-cylon: {
+    cylon: {
       type: Boolean,
       default: false,
     },
-cylonv: {
+    cyclonv: {
       type: Boolean,
       default: false,
     },
-fade: {
+    fade: {
       type: Boolean,
       default: false,
     },
-spin: {
+    spin: {
       type: Boolean,
       default: false,
     },
-spinr: {
+    spinr: {
       type: Boolean,
       default: false,
     },
-spinp: {
+    spinp: {
       type: Boolean,
       default: false,
     },
-spinrp: {
+    spinrp: {
       type: Boolean,
       default: false,
     },
-throb: {
+    throb: {
       type: Boolean,
       default: false,
-    }
     },
-    setup(props) {
-        const variant = computed(() => props.success ? 'success':
-props.warning ? 'warning':
-props.danger ? 'danger':
-props.info ? 'info':
-props.primary ? 'primary':
-props.secondary ? 'secondary':
-props.dark ? 'dark' :
-props.light ? 'light' : '')
+  },
+  setup(props) {
+    const variant = computed(() =>
+      props.success
+        ? 'success'
+        : props.warning
+        ? 'warning'
+        : props.danger
+        ? 'danger'
+        : props.info
+        ? 'info'
+        : props.primary
+        ? 'primary'
+        : props.secondary
+        ? 'secondary'
+        : props.dark
+        ? 'dark'
+        : props.light
+        ? 'light'
+        : '',
+    )
 
-const animation = computed(() => props.cylon ? 'cyclon' :
-props.cyclonv ? 'cylon-vertical' :
-props.fade?'fade':
-props.spin?'spin' :
-props.spinr? 'spin-reverse':
-props.spinp ? 'spin-pulse' :
-props.spinrp? 'spin-reverse-pulse':
-props.throb? 'throb' : 'false')
+    const animation = computed(() =>
+      props.cylon
+        ? 'cyclon'
+        : props.cyclonv
+        ? 'cylon-vertical'
+        : props.fade
+        ? 'fade'
+        : props.spin
+        ? 'spin'
+        : props.spinr
+        ? 'spin-reverse'
+        : props.spinp
+        ? 'spin-pulse'
+        : props.spinrp
+        ? 'spin-reverse-pulse'
+        : props.throb
+        ? 'throb'
+        : 'false',
+    )
 
-return {variant, animation}
-    }
+    return { variant, animation }
+  },
 })
 </script>

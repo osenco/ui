@@ -1,0 +1,1 @@
+declare module '@dvuckovic/vue-bootstrap-icons';

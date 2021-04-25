@@ -208,7 +208,7 @@ if (!argv.format || argv.format === "es") {
     external,
     output: {
       format: "esm",
-      file: "dist/vuelib.esm.js"
+      file: "dist/ui.esm.js"
     },
     plugins: [
       typescript(),
@@ -238,9 +238,9 @@ if (!argv.format || argv.format === "iife") {
     external,
     output: {
       compact: true,
-      file: "dist/vuelib-browser.min.js",
+      file: "dist/ui-browser.min.js",
       format: "iife",
-      name: "vuelib",
+      name: "ui",
       exports: "named",
       globals
     },

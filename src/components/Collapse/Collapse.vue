@@ -3,13 +3,13 @@
     <button
       v-bind="$attrs"
       data-bs-toggle="collapse"
-      :data-bs-target="`#collapse${id}`"
+      :data-bs-target="`#collapse-${id}`"
     >
       {{ toggleText }}
     </button>
   </slot>
 
-  <div :id="`collapse${id}`" class="collapse" :class="{ show: active }">
+  <div :id="`collapse-${id}`" class="collapse" :class="{ show: active }">
     <slot></slot>
   </div>
 </template>
@@ -29,7 +29,7 @@ export default defineComponent({
       default: 'btn btn-toggle',
     },
     id: {
-      default: new Date().getTime(),
+      default: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
     },
     active: {
       type: Boolean,

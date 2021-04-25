@@ -5,53 +5,7 @@
 [Typescript](https://github.com/microsoft/TypeScript)\
 [Rollup](https://github.com/rollup/rollup)
 
-## Project setup
-
-Please follow below mentioned step to run this project:
-
-- Clone the repo
-
-```shell
-https://github.com/osenco/ui
-```
-
-### Run
-
-```
-yarn install
-```
-
-### Compiles and hot-reloads for development
-
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-
-```
-yarn build
-```
-
-### Build Library
-
-```
-yarn build:js
-```
-
-### Build Library With Separate Css file
-
-```
-yarn build:js_css
-```
-
-### Lints and fixes files
-
-```
-yarn lint
-```
-
-## Usage Of Components Built
+## Import
 
 **As Component**
 
@@ -75,4 +29,26 @@ yarn lint
   import * as ui from '@osenco/ui';
     ...
   app.use(ui)
+```
+
+## Usage
+
+**As Component**
+
+```vue
+  <column md="6">
+    <form-group label="Name">
+      <form-input name="name" v-model="user.name" />
+    </form-group>
+    <form-group label="Password">
+      <form-input password name="password" v-model="user.password" />
+    </form-group>
+    <form-group
+      input
+      label="Address"
+      text
+      name="address"
+      v-model="user.address"
+    />
+  </column>
 ```

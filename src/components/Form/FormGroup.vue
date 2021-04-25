@@ -3,16 +3,21 @@
     <label v-if="label" :class="labelClass">
       {{ label }}
     </label>
+    <form-input v-if="input" v-bind="$attrs" />
     <slot></slot>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import FormInput from './Input.vue'
 
 export default defineComponent({
+  components: {
+    FormInput,
+  },
   props: {
-    fluid: {
+    input: {
       type: Boolean,
       default: false,
     },

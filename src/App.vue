@@ -2,23 +2,29 @@
   <container fluid>
     <nav-bar>
       <template #toggle>
-        <drawer>
-          <template #toggle> Menu </template>
-        </drawer>
+        <drawer> </drawer>
       </template>
     </nav-bar>
     <row>
       <column md="6">
+        {{ user }}
         <form-group label="Name">
-          <form-input name="name" />
+          <form-input name="name" v-model="user.name" />
         </form-group>
         <form-group label="Password">
-          <password name="password" />
+          <form-input password name="password" v-model="user.password" />
         </form-group>
+        <form-group
+          input
+          label="Address"
+          text
+          name="address"
+          v-model="user.address"
+        />
       </column>
 
-      <column md="6" class="mt-2">
-        <columnlapse
+      <column md="6" sm="12" class="mt-2">
+        <collapse
           class="btn btn-rounded btn-primary"
           toggleInput="Contact Details"
         >
@@ -29,7 +35,7 @@
           <form-group label="Phone">
             <form-input tel name="phone" />
           </form-group>
-        </columnlapse>
+        </collapse>
       </column>
 
       <column md="6" class="mt-2">
@@ -40,8 +46,8 @@
         </accordion>
       </column>
       <column md="6">
-        <btn primary round> Submit Now </btn>
-        <btn primary icon lg float>&raquo;</btn>
+        <btn primary submit round> Submit Now </btn>
+        <btn secondary button icon lg float>&raquo;</btn>
       </column>
     </row>
   </container>
@@ -56,18 +62,18 @@ import FormGroup from './components/Form/FormGroup.vue'
 import Btn from './components/Button/Btn.vue'
 
 import FormInput from './components/Form/Input.vue'
-import Password from './components/Form/Password.vue'
 
-import Columnlapse from './components/Columnlapse/Columnlapse.vue'
+import Collapse from './components/Collapse/Collapse.vue'
 
 import Tabs from './components/Nav/Tabs/Tabs.vue'
 import TabItem from './components/Nav/Tabs/TabItem.vue'
 
-import Drawer from './components/Nav/OffCanvas.vue'
+import Drawer from './components/Nav/Drawer.vue'
 import NavBar from './components/Nav/Navbar.vue'
 
-import Accordion from './components/Columnlapse/Accordion.vue'
-import AccordionItem from './components/Columnlapse/AccordionItem.vue'
+import Accordion from './components/Collapse/Accordion.vue'
+import AccordionItem from './components/Collapse/AccordionItem.vue'
+import { reactive } from '@vue/reactivity'
 
 export default {
   name: 'App',
@@ -75,15 +81,26 @@ export default {
     Container,
     FormGroup,
     FormInput,
-    Password,
     Row,
     Column,
-    Columnlapse,
+    Collapse,
     Drawer,
     NavBar,
     AccordionItem,
     Accordion,
     Btn,
+  },
+
+  setup() {
+    const user = reactive({
+      name: '',
+      phone: '',
+      email: '',
+      password: '',
+      address: '',
+    })
+
+    return { user }
   },
 }
 </script>

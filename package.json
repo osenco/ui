@@ -3,7 +3,7 @@
   "version": "0.0.6",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
-  "unpkg": "dist/vuelib.min.js",
+  "unpkg": "dist/ui.min.js",
   "types": "types/index.d.ts",
   "files": [
     "dist",
@@ -31,7 +31,7 @@
     "docs:build": "vuepress build docs"
   },
   "dependencies": {
-    "@dvuckovic/vue-bootstrap-icons": "^1.0.7",
+    "@dvuckovic/vue3-bootstrap-icons": "^1.0.3",
     "@popperjs/core": "^2.9.2",
     "bootstrap": "^5.0.0-beta3",
     "core-js": "^3.6.5",
@@ -107,5 +107,12 @@
     "last 2 versions",
     "not dead"
   ],
-  "license": "(MIT OR Apache-2.0)"
+  "license": "(MIT OR Apache-2.0)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/osenco/ui"
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  }
 }

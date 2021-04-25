@@ -9,11 +9,11 @@
     :value="modelValue"
     @input="$emit('update:modelValue', $event.target.value)"
   />
-  <div class="valid-feedback" v-if="feedback.valid">
-        {{ feedback.valid }}
+  <div class="valid-feedback" v-if="feedback?.valid">
+        {{ feedback?.valid }}
       </div>
-  <div class="invalid-feedback" v-if="feedback.invalid">
-        {{ feedback.valid }}
+  <div class="invalid-feedback" v-if="feedback?.invalid">
+        {{ feedback?.invalid }}
       </div>
 </template>
 
