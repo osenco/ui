@@ -8,6 +8,8 @@
     :min="min"
     :max="max"
     :step="step"
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
   />
 </template>
 
@@ -42,6 +44,9 @@ export default defineComponent({
       type: Number,
       default: 100,
     },
+    modelValue: {
+      type: Number,
+      default: 0
   },
 })
 </script>

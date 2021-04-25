@@ -13,9 +13,10 @@
     role="alert"
     aria-live="assertive"
     aria-atomic="true"
+    :id="`toast-${id}`"
   >
     <div class="toast-header">
-      <img src="..." class="rounded me-2" alt="..." />
+      <img v-if="img" :src="img" class="rounded me-2" :alt="title" />
       <strong class="me-auto">
         {{ title }}
       </strong>
@@ -39,7 +40,12 @@
 import { defineComponent, onMounted } from 'vue'
 
 export default defineComponent({
+  name: 'Toast',
+  emits: ['hidden'],
   props: {
+    id: {
+      default: new Date().getTime(),
+    },
     dark: {
       type: Boolean,
       default: false,
@@ -72,18 +78,20 @@ export default defineComponent({
       type: String,
       default: 'Notification',
     },
+    img: {
+      type: String
+    },
     time: {
       type: String,
       default: 'a few seconds ago',
     },
   },
 
-  emits: ['hidden'],
-
   setup(props, { emit }) {
     onMounted(() => {
-      const myToastEl = document.getElementById('myToast')
-      myToastEl?.addEventListener('hidden.bs.toast', function () {
+      const toast = document.getElementById(`toast-${props.id}`)
+
+      toast?.addEventListener('hidden.bs.toast', function () {
         emit('hidden')
       })
     })

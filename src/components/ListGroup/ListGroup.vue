@@ -1,7 +1,18 @@
 <template>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">An item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
+  <ul class="list-group list-group-flush" :id="`list-group-${id}`">
+      <slot></slot>
   </ul>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  props: {
+    id: {
+      type: String,
+      default: new Date().getTime(),
+    },
+  },
+})
+</script>

@@ -1,15 +1,17 @@
 <template>
   <input
-    type="password"
+    type="file"
     class="form-control"
     :class="{ 'form-control-lg': sm, 'form-control-lg': lg }"
     :name="name"
     :id="`form-${id || name}`"
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
   />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
   props: {
@@ -27,6 +29,9 @@ export default defineComponent({
     id: {
       type: String,
     },
+    modelValue: {
+      type: Number,
+      default: 0
   },
 })
 </script>

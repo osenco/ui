@@ -3,10 +3,13 @@
     <input
       class="form-check-input"
       type="checkbox"
-      id="flexSwitchCheckDefault"
+      :checked="modelValue"
+    :name="name"
+      :id="`form-check-${id || name}`"
       v-bind="$attrs"
+      @change="$emit('update:modelValue', $event.target.checked)"
     />
-    <label class="form-check-label" for="flexSwitchCheckDefault">
+    <label v-if="label" :class="labelClass" :for="`form-check-${id || name}`">
       {{ label }}
     </label>
   </div>
@@ -26,8 +29,15 @@ export default defineComponent({
     },
     labelClass: {
       type: String,
-      default: 'form-label',
+      default: 'form-check-label',
     },
+    id: {
+      default: new Date().getTime(),
+    },
+    modelValue: {
+      type: Boolean,
+      default: false
+    }
   },
 })
 </script>

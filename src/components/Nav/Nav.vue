@@ -32,3 +32,20 @@
     </template>
   </ul>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  props: {
+    id: {
+      type: String,
+      default: new Date().getTime(),
+    },
+    items: {
+      type: Array,
+      required: true
+    }
+  },
+})
+</script>

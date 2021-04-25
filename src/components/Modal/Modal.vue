@@ -4,19 +4,19 @@
       type="button"
       class="btn btn-primary"
       data-bs-toggle="modal"
-      :data-bs-target="`#${id}Label`"
+      :data-bs-target="`#modal-${id}`"
     >
-      Open Modal
+            {{ title }}
     </button>
   </slot>
 
   <div
     class="modal fade"
     :class="{ show: active }"
-    :id="`${id}Label`"
+    :id="`modal-${id}`"
     :data-bs-backdrop="backdrop"
     tabindex="-1"
-    aria-labelledby="`${id}Label`"
+    :aria-labelledby="`modal-${id}-label`"
     aria-hidden="true"
   >
     <div
@@ -29,7 +29,9 @@
     >
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" :id="`${id}Label`">New message</h5>
+          <h5 class="modal-title" :id="`modal-${id}-label`">
+            {{ title }}
+          </h5>
           <slot name="close">
             <button
               type="button"
@@ -43,14 +45,15 @@
           <slot></slot>
         </div>
         <div class="modal-footer">
-          <button
+          <slot name="footer">
+            <button
             type="button"
             class="btn btn-secondary"
             data-bs-dismiss="modal"
           >
             Close
           </button>
-          <button type="button" class="btn btn-primary">Send message</button>
+          </slot>
         </div>
       </div>
     </div>
@@ -73,6 +76,9 @@ export default defineComponent({
     backdrop: {
       type: String,
       default: 'none',
+    },
+    title: {
+      type: String,
     },
     id: {
       default: new Date().getTime(),

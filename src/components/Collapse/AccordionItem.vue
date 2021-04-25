@@ -18,7 +18,7 @@
       class="accordion-collapse collapse"
       :class="{ show: active }"
       :aria-labelledby="`heading-${id}`"
-      :data-bs-parent="`#${parent}`"
+      :data-bs-parent="`#accordion-${parent}`"
     >
       <div class="accordion-body">
         <slot></slot>
@@ -30,9 +30,10 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
+  name: 'AccordionItem',
   props: {
     parent: {
-      type: String,
+      default: new Date().getTime(),
     },
     title: {
       type: String,

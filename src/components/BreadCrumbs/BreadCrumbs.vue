@@ -21,6 +21,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
+  name: 'BreadCrumbs',
   props: {
     divider: {
       type: String,
@@ -33,7 +34,7 @@ export default defineComponent({
     },
 
     links: {
-      type: Object,
+      type: [Object, Array],
     },
   },
 })

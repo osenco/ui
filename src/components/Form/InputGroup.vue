@@ -1,6 +1,6 @@
 <template>
   <div class="form-group">
-    <label :class="labelClass">
+    <label v-if="label" :class="labelClass">
       {{ label }}
     </label>
     <div class="input-group" v-bind="$attrs">

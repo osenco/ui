@@ -6,24 +6,14 @@
   >
     <div class="carousel-indicators">
       <button
+      v-for="(item, i) in items"
+      :key="item"
         type="button"
         data-bs-target="#carouselExampleCaptions"
-        data-bs-slide-to="0"
+        :data-bs-slide-to="i"
         class="active"
         aria-current="true"
-        aria-label="Slide 1"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide-to="1"
-        aria-label="Slide 2"
-      ></button>
-      <button
-        type="button"
-        data-bs-target="#carouselExampleCaptions"
-        data-bs-slide-to="2"
-        aria-label="Slide 3"
+        :aria-label="`Slide ${i}`"
       ></button>
     </div>
     <div class="carousel-inner">
@@ -49,3 +39,19 @@
     </button>
   </div>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
+  name: 'Carousel',
+  props: {
+    title: {
+      type: String,
+    },
+    items: {
+      type: [Object, Array]
+    }
+  },
+})
+</script>

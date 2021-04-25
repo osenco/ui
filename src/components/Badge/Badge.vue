@@ -19,7 +19,11 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
+  name: 'Badge',
   props: {
+    id: {
+      default: new Date().getTime(),
+    },
     dark: {
       type: Boolean,
       default: false,

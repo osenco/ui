@@ -26,6 +26,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
+  name: 'BlockButton',
   props: {
     primary: {
       type: Boolean,

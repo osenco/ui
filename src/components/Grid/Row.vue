@@ -9,10 +9,9 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   props: {
-    fluid: {
-      type: Boolean,
-      default: false,
-    },
+    title: {
+      type: String,
+    }
   },
 })
 </script>

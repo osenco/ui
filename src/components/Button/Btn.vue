@@ -1,5 +1,6 @@
 <template>
   <button
+  :type="type"
     class="btn"
     :class="{
       'btn-primary': primary,
@@ -25,9 +26,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
+  name: 'Button',
   emits: ['click'],
   props: {
     primary: {
@@ -90,13 +92,29 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    submit: {
+      type: Boolean,
+      default: false,
+    },
+    reset: {
+      type: Boolean,
+      default: false,
+    },
 
     setup(props, { emit }) {
+      const type = computed(() => {
+        return props.submit
+          ? 'submit'
+          : props.reset
+          ? 'reset'
+          : 'button'
+      })
+
       function clicked() {
         emit('click')
       }
 
-      return { clicked }
+      return { type, clicked }
     },
   },
 })
