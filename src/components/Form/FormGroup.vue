@@ -13,6 +13,7 @@ import { defineComponent } from 'vue'
 import FormInput from './Input.vue'
 
 export default defineComponent({
+  name: 'FormGroup',
   components: {
     FormInput,
   },

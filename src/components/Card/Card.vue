@@ -15,10 +15,17 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
+  name: 'Card',
   props: {
     title: {
       type: String,
-    }
+    },
+    caption: {
+      type: String,
+    },
+    image: {
+      type: String,
+    },
   },
 })
 </script>

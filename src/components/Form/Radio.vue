@@ -5,12 +5,12 @@
       type="radio"
       :checked="value === modelValue"
       :value="value"
-    :name="name"
-      :id="`form-check-${id || name}`"
+      :name="name || id"
+      :id="`radio-${id || name}`"
       v-bind="$attrs"
       @change="$emit('update:modelValue', value)"
     />
-    <label v-if="label" :class="labelClass" :for="`form-check-${id || name}`">
+    <label v-if="label" :class="labelClass" :for="`radio-${id || name}`">
       {{ label }}
     </label>
   </div>
@@ -20,6 +20,7 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
+  name: 'FormRadio',
   props: {
     inline: {
       type: Boolean,
@@ -27,7 +28,6 @@ export default defineComponent({
     },
     name: {
       type: String,
-      required: true
     },
     label: {
       type: String,
@@ -37,16 +37,16 @@ export default defineComponent({
       default: 'form-check-label',
     },
     id: {
-      default: new Date().getTime(),
+      default: Math.random().toString(36).substring(2, 9),
     },
     modelValue: {
       type: [String, Number],
-      default: false
+      default: '',
     },
     value: {
       type: [String, Number],
-      required: true
-    }
+      required: true,
+    },
   },
 })
 </script>

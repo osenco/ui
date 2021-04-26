@@ -4,12 +4,12 @@
       class="form-check-input"
       type="checkbox"
       :checked="modelValue"
-    :name="name"
-      :id="`form-check-${id || name}`"
+      :name="name || id"
+      :id="`switch-${name || id}`"
       v-bind="$attrs"
       @change="$emit('update:modelValue', $event.target.checked)"
     />
-    <label v-if="label" :class="labelClass" :for="`form-check-${id || name}`">
+    <label v-if="label" :class="labelClass" :for="`switch-${name || id}`">
       {{ label }}
     </label>
   </div>
@@ -32,7 +32,7 @@ export default defineComponent({
       default: 'form-check-label',
     },
     id: {
-      default: new Date().getTime(),
+      default: Math.random().toString(36).substring(2, 9),
     },
     modelValue: {
       type: Boolean,

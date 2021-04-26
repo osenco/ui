@@ -81,7 +81,7 @@ export default defineComponent({
       type: String,
     },
     id: {
-      default: new Date().getTime(),
+      default: Math.random().toString(36).substring(2, 9),
     },
     active: {
       type: Boolean,

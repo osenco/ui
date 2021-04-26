@@ -1,5 +1,5 @@
 <template>
-    <form @submit.prevent="submitForm" autocomplete="autocomplete" :content-type="multipart ? `multipart/form-data`: 'form'" :class="{
+    <form :autocomplete="autocomplete" :content-type="multipart ? `multipart/form-data`: 'form'" class="form" :class="{
         'needs-validation': validate
     }">
         <slot></slot>
@@ -11,7 +11,6 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
     name: 'Form',
-    emits: ['submit'],
     props: {
         autocomplete: {
             type: String,
@@ -25,13 +24,6 @@ export default defineComponent({
             type: Boolean,
             default: false
         }
-    },
-    setup(props, {emit}) {
-        function submitForm(e: Event) {
-            emit('submit')
-        }
-
-        return { submitForm}
     },
 })
 </script>

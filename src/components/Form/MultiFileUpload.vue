@@ -4,7 +4,7 @@
     class="form-control"
     :class="{ 'form-control-lg': sm, 'form-control-lg': lg }"
     :name="name"
-    :id="`form-${id || name}`"
+    :id="`${name || id}`"
     :value="modelValue"
     multiple
     @input="$emit('update:modelValue', $event.target.value)"

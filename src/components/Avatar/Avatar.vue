@@ -1,12 +1,21 @@
 <template>
   <div class="user-card">
-    <div class="user-avatar bg-primary">
-      <img :src="image" :alt="name" />
+    <div class="user-avatar"
+    :class="{
+      'bg-dark': dark,
+      'bg-light': light,
+      'bg-info': info,
+      'bg-warning': warning,
+      'bg-danger': danger,
+      'bg-success': success,
+      'bg-secondary': secondary,
+    }">
+      <img :src="subject.avatar || subject.image || image" :alt="subject.name || name" />
     </div>
     <div class="user-info">
-      <span class="lead-text">{{ name }} </span>
+      <span class="lead-text">{{ subject.name || name }} </span>
       <span class="sub-text">
-        {{ desc }}
+        {{ subject.caption || caption }}
       </span>
     </div>
   </div>
@@ -17,15 +26,46 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   props: {
+    dark: {
+      type: Boolean,
+      default: false,
+    },
+    light: {
+      type: Boolean,
+      default: false,
+    },
+    info: {
+      type: Boolean,
+      default: false,
+    },
+    warning: {
+      type: Boolean,
+      default: false,
+    },
+    danger: {
+      type: Boolean,
+      default: false,
+    },
+    success: {
+      type: Boolean,
+      default: false,
+    },
+    secondary: {
+      type: Boolean,
+      default: false,
+    },
     name: {
       type: String,
     },
-    desc: {
+    caption: {
       type: String,
     },
     image: {
       type: String,
     },
+    subject: {
+      type: Object
+    }
   },
 })
 </script>

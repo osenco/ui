@@ -18,10 +18,10 @@
       'btn-round': round,
       'btn-icon': icon,
       'btn-float': float,
+      'btn-close': close,
     }"
-    @click="clicked"
   >
-    <slot> Sumbit </slot>
+    <slot></slot>
   </button>
 </template>
 
@@ -102,6 +102,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    close: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   setup(props, { emit }) {
@@ -109,11 +113,7 @@ export default defineComponent({
       return props.submit ? 'submit' : props.reset ? 'reset' : 'button'
     })
 
-    function clicked() {
-      emit('click')
-    }
-
-    return { type, clicked }
+    return { type }
   },
 })
 </script>

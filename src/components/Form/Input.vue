@@ -5,7 +5,7 @@
     :class="{ 'form-control-lg': sm, 'form-control-lg': lg }"
     :autocomplete="autocomplete"
     :name="name"
-    :id="`form-${id || name}`"
+    :id="`${name || id}`"
     :value="modelValue"
     @input="$emit('update:modelValue', $event.target.value)"
   />

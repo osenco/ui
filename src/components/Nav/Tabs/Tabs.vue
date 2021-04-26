@@ -27,7 +27,7 @@ export default defineComponent({
   props: {
     id: {
       type: String,
-      default: new Date().getTime(),
+      default: Math.random().toString(36).substring(2, 9),
     },
     tabs: {
       type: Object,

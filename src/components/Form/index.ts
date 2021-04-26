@@ -1,5 +1,5 @@
 import { App as Application } from "vue";
-import FormWrap from "./FormWrap.vue";
+import FormWrap from "./Wrap.vue";
 import FormGroup from "./FormGroup.vue";
 import FormFloating from "./FormFloating.vue";
 

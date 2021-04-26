@@ -21,7 +21,6 @@ export default defineComponent({
     },
     size: {
       type: String,
-      default: '2x',
     },
     success: {
       type: Boolean,
@@ -106,7 +105,7 @@ export default defineComponent({
         ? 'dark'
         : props.light
         ? 'light'
-        : '',
+        : 'white',
     )
 
     const animation = computed(() =>
@@ -126,7 +125,7 @@ export default defineComponent({
         ? 'spin-reverse-pulse'
         : props.throb
         ? 'throb'
-        : 'false',
+        : 'none',
     )
 
     return { variant, animation }

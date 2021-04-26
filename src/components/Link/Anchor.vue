@@ -39,7 +39,7 @@ export default defineComponent({
   name: 'Anchor',
   props: {
     id: {
-      default: new Date().getTime(),
+      default: Math.random().toString(36).substring(2, 9),
     },
     dark: {
       type: Boolean,

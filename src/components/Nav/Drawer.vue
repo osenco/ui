@@ -1,37 +1,33 @@
 <template>
-    <slot name="toggle">
-      <button
-    class="btn btn-primary"
-    type="button"
-    data-bs-toggle="offcanvas"
-    :data-bs-target="`#off-canvas-${id}`"
-    :aria-controls="`off-canvas-${id}`"
-  >
-  Menu
-  </button>
+  <slot name="toggle">
+    <btn
+      light
+      data-bs-toggle="offcanvas"
+      :data-bs-target="`#off-canvas-${id}`"
+      :aria-controls="`off-canvas-${id}`"
+    >
+      <icon name="list" size="2x" />
+    </btn>
   </slot>
 
   <div
     class="offcanvas offcanvas-start"
     tabindex="-1"
     :id="`off-canvas-${id}`"
-   :aria-labelledby="`off-canvas-${id}-label`"
+    :aria-labelledby="`off-canvas-${id}-label`"
   >
     <div class="offcanvas-header">
       <slot name="header">
-      <h5 class="offcanvas-title" :id="`off-canvas-${id}-label`">
-        {{ title }}
-      </h5>
+        <h5 class="offcanvas-title" :id="`off-canvas-${id}-label`">
+          {{ title }}
+        </h5>
       </slot>
+
       <slot name="close">
-        <button
-        type="button"
-        class="btn-close text-reset"
-        data-bs-dismiss="offcanvas"
-        aria-label="Close"
-      ></button>
+        <btn close dark data-bs-dismiss="offcanvas" aria-label="Close"></btn>
       </slot>
     </div>
+
     <div class="offcanvas-body">
       <slot></slot>
     </div>
@@ -41,15 +37,23 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
 
+import Icon from '../Icon/Icon.vue'
+import Btn from '../Button/Btn.vue'
+
 export default defineComponent({
+  components: {
+    Icon,
+    Btn,
+  },
   props: {
     id: {
       type: [String, Number],
-      default: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
+      default:
+        Math.random().toString(36).substring(2, 9),
     },
     title: {
       type: String,
-      default: "NavBar",
+      default: 'NavBar',
     },
   },
 })

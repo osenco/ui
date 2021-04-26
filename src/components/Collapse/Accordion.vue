@@ -11,7 +11,7 @@ export default defineComponent({
   name: 'Accordion',
   props: {
     id: {
-      default: Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15),
+      default: Math.random().toString(36).substring(2, 9),
     }
   },
 })

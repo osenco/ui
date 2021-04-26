@@ -1,18 +1,28 @@
 <template>
   <select
-    :type="type"
     class="form-control"
     :class="{ 'form-control-lg': sm, 'form-control-lg': lg }"
     :name="name"
-    :id="`form-check-${id || name}`"
+    :id="`select-${name || id}`"
     :value="modelValue"
     v-bind="{
       ...$attrs,
-      onChange: ($event) => { $emit('update:modelValue', $event.target.value) }
+      onChange: ($event) => {
+        $emit('update:modelValue', $event.target.value)
+      },
     }"
   >
-    <option v-for="option in options" :key="option.id" :value="option.id" :selected="option.id == modelValue">
-        {{ option.name }}
+    <option
+      v-for="(option, id) in options"
+      :key="id"
+      :value="option.id || option.value || id"
+      :selected="
+        option.id == modelValue ||
+        option.value == modelValue ||
+        id == modelValue
+      "
+    >
+      {{ option.name || option.title || option.label || option }}
     </option>
   </select>
 </template>
@@ -21,6 +31,7 @@
 import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
+  name: 'FormSelect',
   props: {
     sm: {
       type: Boolean,
@@ -34,32 +45,16 @@ export default defineComponent({
       type: String,
     },
     id: {
-      default: new Date().getTime(),
+      default: Math.random().toString(36).substring(2, 9),
     },
     options: {
-      type: Array,
-      required: true
+      type: [Array, Object],
+      required: true,
     },
     modelValue: {
       type: [String, Number],
-      default: ''
-    }
-  },
-
-  setup(props, {emit}) {
-    const type = computed(() => {
-      return props.tel
-        ? 'tel'
-        : props.email
-        ? 'email'
-        : props.password
-        ? 'password'
-        : props.number
-        ? 'number'
-        : 'text'
-    })
-
-    return { type }
+      default: '',
+    },
   },
 })
 </script>
