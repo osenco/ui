@@ -1,6 +1,5 @@
 <template>
   <bootstrap-icon :icon="name" :size="size" />
-  <!-- :variant="variant" :animation="animation" -->
 </template>
 
 <script lang="ts">
@@ -15,8 +14,29 @@ export default defineComponent({
     name: {
       type: String,
     },
-    size: {
-      type: String,
+    sm: {
+      type: Boolean,
+      default: false,
+    },
+    md: {
+      type: Boolean,
+      default: false,
+    },
+    x2: {
+      type: Boolean,
+      default: false,
+    },
+    x3: {
+      type: Boolean,
+      default: false,
+    },
+    x4: {
+      type: Boolean,
+      default: false,
+    },
+    x5: {
+      type: Boolean,
+      default: false,
     },
     success: {
       type: Boolean,
@@ -84,6 +104,21 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const size = computed(() =>
+      props.sm
+        ? 'sm'
+        : props.md
+        ? 'md'
+        : props.x2
+        ? '2x'
+        : props.x3
+        ? '3x'
+        : props.x4
+        ? '4x'
+        : props.x5
+        ? '5x'
+        : '1x',
+    )
     const variant = computed(() =>
       props.success
         ? 'success'
@@ -124,7 +159,7 @@ export default defineComponent({
         : 'none',
     )
 
-    return { variant, animation }
+    return { size, variant, animation }
   },
 })
 </script>

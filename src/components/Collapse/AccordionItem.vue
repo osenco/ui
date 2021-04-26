@@ -5,7 +5,7 @@
         class="accordion-button"
         data-bs-toggle="collapse"
         :data-bs-target="`#accordion-collapse-${id}`"
-        aria-expanded="true"
+        :aria-expanded="active"
         :aria-controls="`accordion-collapse-${id}`"
         v-bind="$attrs"
       >
@@ -34,6 +34,7 @@ export default defineComponent({
   props: {
     parent: {
       default: Math.random().toString(36).substring(2, 9),
+      required: true
     },
     title: {
       type: String,

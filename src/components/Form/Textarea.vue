@@ -1,6 +1,5 @@
 <template>
-  <input
-    :type="type"
+  <textarea
     class="form-control"
     :class="{ 'form-control-lg': sm, 'form-control-lg': lg }"
     :autocomplete="autocomplete"
@@ -23,7 +22,7 @@
 import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'FormInput',
+  name: 'FormTextarea',
   props: {
     autofill: {
       type: String,
@@ -44,26 +43,6 @@ export default defineComponent({
       type: String,
       default: Math.random().toString(36).substring(2, 9),
     },
-    password: {
-      type: Boolean,
-      default: false,
-    },
-    tel: {
-      type: Boolean,
-      default: false,
-    },
-    email: {
-      type: Boolean,
-      default: false,
-    },
-    number: {
-      type: Boolean,
-      default: false,
-    },
-    date: {
-      type: Boolean,
-      default: false,
-    },
     modelValue: {
       type: [String, Number],
       default: '',
@@ -74,25 +53,11 @@ export default defineComponent({
   },
 
   setup(props, { emit }) {
-    const type = computed(() => {
-      return props.date
-        ? 'date'
-        : props.tel
-        ? 'tel'
-        : props.email
-        ? 'email'
-        : props.password
-        ? 'password'
-        : props.number
-        ? 'number'
-        : 'text'
-    })
-
     const autocomplete = computed(() => {
       return props.autofill !== 'off' ? props.name : 'off'
     })
 
-    return { type, autocomplete }
+    return { autocomplete }
   },
 })
 </script>

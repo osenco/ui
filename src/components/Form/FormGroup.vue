@@ -14,6 +14,7 @@ import FormInput from './Input.vue'
 
 export default defineComponent({
   name: 'FormGroup',
+  inheritAttrs: false,
   components: {
     FormInput,
   },

@@ -22,108 +22,119 @@
           {{ user }}
         </column>
 
-        <column md="9" sm="12" class="mt-2">
-          <row>
-            <column md="12">
-              <form-wrap validate>
-                <form-group label="Name">
-                  <form-input name="name" v-model="user.name" />
-                </form-group>
+        <column md="9" sm="12">
+          <wrap mt="2" >
+            <row>
+              <column md="12">
+                <form-wrap validate>
+                  <form-group label="Name">
+                    <form-input name="name" v-model="user.name" />
+                  </form-group>
 
-                <form-group label="Phone">
-                  <form-input tel name="phone" v-model="user.phone" />
-                </form-group>
+                  <form-group label="Phone">
+                    <form-input tel name="phone" v-model="user.phone" />
+                  </form-group>
 
-                <form-group label="Gender">
-                  <form-select
-                    name="gender"
-                    v-model="user.gender"
-                    :options="{ m: 'Male', f: 'Female' }"
-                  />
-                </form-group>
-                <form-group label="Notify">
-                  <form-check
-                    name="notify"
-                    v-model="user.notify"
-                    label="Notify Me"
-                  />
-                </form-group>
-                <form-group label="Activity">
-                  <form-check-multi
-                    v-model="user.activity"
-                    label="Login"
-                    value="Login"
-                    id="login"
-                  />
-                  <form-check-multi
-                    v-model="user.activity"
-                    label="Purchase"
-                    value="Purchase"
-                    id="purchase"
-                    inline
-                  />
-                </form-group>
-                <form-group label="Title">
-                  <form-radio
-                    name="title"
-                    v-model="user.title"
-                    label="Mr."
-                    value="Mr"
-                    id="mr"
-                  />
-                  <form-radio
-                    name="title"
-                    v-model="user.title"
-                    label="Mrs."
-                    value="Mrs"
-                    id="mrs"
-                    inline
-                  />
-                </form-group>
-                <form-group label="Password">
-                  <form-input
+                  <form-group label="Gender">
+                    <form-select
+                      name="gender"
+                      v-model="user.gender"
+                      :options="{ m: 'Male', f: 'Female' }"
+                    />
+                  </form-group>
+                  <form-group label="Notify">
+                    <form-check
+                      name="notify"
+                      v-model="user.notify"
+                      label="Notify Me"
+                    />
+                  </form-group>
+                  <form-group label="Activity">
+                    <form-check-multi
+                      v-model="user.activity"
+                      label="Login"
+                      value="Login"
+                      id="login"
+                    />
+                    <form-check-multi
+                      v-model="user.activity"
+                      label="Purchase"
+                      value="Purchase"
+                      id="purchase"
+                      inline
+                    />
+                  </form-group>
+                  <form-group label="Title">
+                    <form-radio
+                      name="title"
+                      v-model="user.title"
+                      label="Mr."
+                      value="Mr"
+                      id="mr"
+                    />
+                    <form-radio
+                      name="title"
+                      v-model="user.title"
+                      label="Mrs."
+                      value="Mrs"
+                      id="mrs"
+                      inline
+                    />
+                  </form-group>
+                  <form-group
+                    input
+                    label="Password"
                     password
                     name="password"
                     v-model="user.password"
                   />
-                </form-group>
-                <form-group
-                  input
-                  label="Address"
-                  text
-                  name="address"
-                  v-model="user.address"
-                />
-              </form-wrap>
-              <collapse
-                class="btn btn-rounded btn-primary mt-4"
-                toggleInput="Contact Details"
-              >
-                <form-group label="Email Address">
-                  <form-input email name="email" v-model="user.email" />
-                </form-group>
-              </collapse>
-            </column>
+                  <form-group label="Address">
+                    <form-textarea name="address" v-model="user.address" />
+                  </form-group>
+                </form-wrap>
+                <collapse
+                  class="btn btn-rounded btn-primary mt-4"
+                  toggleInput="Contact Details"
+                >
+                  <form-group label="Email Address">
+                    <form-input email name="email" v-model="user.email" />
+                  </form-group>
+                </collapse>
+              </column>
 
-            <column md="6" class="mt-2">
-              <accordion id="something">
-                <accordion-item id="profile" parent="something" title="Profile">
-                  Something awesome
-                </accordion-item>
-              </accordion>
-            </column>
-            <column md="6">
-              <btn primary submit round> Submit Now </btn>
+              <column md="6" class="mt-2">
+                <accordion id="something">
+                  <accordion-item
+                    id="about"
+                    parent="something"
+                    title="About"
+                    active
+                  >
+                    Something awesome
+                  </accordion-item>
+                  <accordion-item
+                    id="profile"
+                    parent="something"
+                    title="Profile"
+                  >
+                    Something awesome
+                  </accordion-item>
+                </accordion>
+              </column>
+              <column md="6">
+                <btn primary submit round> Submit Now </btn>
 
-              <btn secondary button icon lg fab>
-                <icon name="arrow-up" />
-              </btn>
-            </column>
-          </row>
+                <btn secondary button icon lg fab>
+                  <icon name="arrow-up" />
+                </btn>
+              </column>
+            </row>
+          </wrap>
         </column>
       </row>
     </container>
   </main>
+
   <footer class="footer my-4">
     <container>
       <p>&copy; {{ new Date().getFullYear() }} | Osen Concepts</p>
@@ -132,6 +143,7 @@
 </template>
 
 <script>
+import Wrap from './components/Containers/Wrap.vue'
 import Container from './components/Containers/Container.vue'
 import Row from './components/Grid/Row.vue'
 import Column from './components/Grid/Column.vue'
@@ -143,6 +155,7 @@ import Avatar from './components/Avatar/Avatar.vue'
 
 import FormWrap from './components/Form/Wrap.vue'
 import FormInput from './components/Form/Input.vue'
+import FormTextarea from './components/Form/Textarea.vue'
 import FormSelect from './components/Form/Select.vue'
 import FormCheck from './components/Form/Checkbox.vue'
 import FormCheckMulti from './components/Form/MultiCheckbox.vue'
@@ -165,10 +178,12 @@ import { reactive } from '@vue/reactivity'
 export default {
   name: 'App',
   components: {
+    Wrap,
     Container,
     FormWrap,
     FormGroup,
     FormInput,
+    FormTextarea,
     FormSelect,
     FormCheck,
     FormCheckMulti,

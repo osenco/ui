@@ -8,14 +8,24 @@
 import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
-  name: 'Container',
+  name: 'Wrap',
   props: {
-    fluid: {
-      type: Boolean,
-      default: false,
-    },
     d: {
       type: [Number, String],
+    },
+    w: {
+      type: [Number, String],
+    },
+    h: {
+      type: [Number, String],
+    },
+    am: {
+      type: Boolean,
+      default: false
+    },
+    ab: {
+      type: Boolean,
+      default: false
     },
     dSm: {
       type: [Number, String],
@@ -78,16 +88,28 @@ export default defineComponent({
 
   setup(props) {
     const classes = computed(() => {
-      const c: any = []
-      
-      if (props.fluid) {
-        c.push('container-fluid')
-      } else{
-        c.push('container')
-      }
+      const c: any = [
+          'wrap'
+      ]
 
       if (props.d) {
         c.push(`d-${props.d}`)
+      }
+
+      if (props.w) {
+        c.push(`w-${props.w}`)
+      }
+
+      if (props.h) {
+        c.push(`h-${props.h}`)
+      }
+
+      if (props.am) {
+        c.push(`align-middle`)
+      }
+
+      if (props.ab) {
+        c.push(`align-bottom`)
       }
 
       if (props.p) {
