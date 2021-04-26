@@ -48,8 +48,7 @@ export default defineComponent({
   props: {
     id: {
       type: [String, Number],
-      default:
-        Math.random().toString(36).substring(2, 9),
+      default: Math.random().toString(36).substring(2, 9),
     },
     title: {
       type: String,

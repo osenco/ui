@@ -25,6 +25,15 @@
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
 
+.accordion-button:not(.collapsed), a {
+  color: var(--bs-primary) !important;
+}
+
+.form-check-input:checked {
+  background-color: var(--bs-primary) !important;
+  border-color: var(--bs-primary) !important;
+}
+
 .btn-primary, .bg-primary, .badge-primary {
   color: #fff;
   background-color: var(--bs-primary) !important;
@@ -53,10 +62,10 @@
   border-radius: 50%;
 }
 
-.btn-float {
+.btn-fab {
   position: fixed;
-  bottom: 3px;
-  right: 2px;
+  bottom: 4px;
+  right: 4px;
   z-index: 1000;
 }
 

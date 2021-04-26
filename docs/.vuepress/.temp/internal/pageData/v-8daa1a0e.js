@@ -10,15 +10,15 @@ export const data = {
     "actionLink": "/guide",
     "features": [
       {
-        "title": "Feature 1",
+        "title": "Declarative",
         "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       },
       {
-        "title": "Feature 2",
+        "title": "No CSS",
         "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       },
       {
-        "title": "Feature 3",
+        "title": "Fully Customizable",
         "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       }
     ],
@@ -28,12 +28,12 @@ export const data = {
   "headers": [],
   "filePathRelative": "README.md",
   "git": {
-    "updatedTime": 1619297524000,
+    "updatedTime": 1619298136000,
     "contributors": [
       {
         "name": "Mauko Maunde",
         "email": "maukoese@gmail.com",
-        "commits": 1
+        "commits": 2
       }
     ]
   }

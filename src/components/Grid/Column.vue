@@ -15,6 +15,18 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    d: {
+      type: [Number, String],
+    },
+    dSm: {
+      type: [Number, String],
+    },
+    dMd: {
+      type: [Number, String],
+    },
+    dLg: {
+      type: [Number, String],
+    },
     xs: {
       type: [Number, String],
     },
@@ -38,25 +50,47 @@ export default defineComponent({
   setup(props) {
     const classes = computed(() => {
       const c: any = []
+      
       if (props.auto) {
         c.push('col')
+      }
+
+      if (props.d) {
+        c.push(`d-${props.d}`)
+      }
+
+      if (props.dSm) {
+        c.push(`d-sm-${props.dSm}`)
+      }
+
+      if (props.dMd) {
+        c.push(`d-md-${props.dMd}`)
+      }
+
+      if (props.dLg) {
+        c.push(`d-lg-${props.dLg}`)
       }
 
       if (props.xs) {
         c.push(`col-xs-${props.xs}`)
       }
+
       if (props.sm) {
         c.push(`col-sm-${props.sm}`)
       }
+
       if (props.md) {
         c.push(`col-md-${props.md}`)
       }
+
       if (props.lg) {
         c.push(`col-lg-${props.lg}`)
       }
+
       if (props.xl) {
         c.push(`col-xl-${props.xl}`)
       }
+
       if (props.xxl) {
         c.push(`col-xxl-${props.xxl}`)
       }

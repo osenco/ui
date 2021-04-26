@@ -8,13 +8,14 @@
     :id="`${name || id}`"
     :value="modelValue"
     @input="$emit('update:modelValue', $event.target.value)"
+    v-bind="$attrs"
   />
   <div class="valid-feedback" v-if="feedback?.valid">
-        {{ feedback?.valid }}
-      </div>
+    {{ feedback?.valid }}
+  </div>
   <div class="invalid-feedback" v-if="feedback?.invalid">
-        {{ feedback?.invalid }}
-      </div>
+    {{ feedback?.invalid }}
+  </div>
 </template>
 
 <script lang="ts">
@@ -23,10 +24,10 @@ import { computed, defineComponent } from 'vue'
 export default defineComponent({
   name: 'FormInput',
   props: {
-        autofill: {
-            type: String,
-            default:"on"
-        },
+    autofill: {
+      type: String,
+      default: 'on',
+    },
     sm: {
       type: Boolean,
       default: false,
@@ -59,14 +60,14 @@ export default defineComponent({
     },
     modelValue: {
       type: [String, Number],
-      default: ''
+      default: '',
     },
     feedback: {
-      type: Object
-    }
+      type: Object,
+    },
   },
 
-  setup(props, {emit}) {
+  setup(props, { emit }) {
     const type = computed(() => {
       return props.tel
         ? 'tel'

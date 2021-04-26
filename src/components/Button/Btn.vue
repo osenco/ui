@@ -17,7 +17,7 @@
       'btn-block': block,
       'btn-round': round,
       'btn-icon': icon,
-      'btn-float': float,
+      'btn-fab': fab,
       'btn-close': close,
     }"
   >
@@ -90,7 +90,7 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    float: {
+    fab: {
       type: Boolean,
       default: false,
     },

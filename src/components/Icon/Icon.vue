@@ -1,10 +1,6 @@
 <template>
-  <BootstrapIcon
-    :icon="name"
-    :size="size"
-    :variant="variant"
-    :animation="animation"
-  />
+  <bootstrap-icon :icon="name" :size="size" />
+  <!-- :variant="variant" :animation="animation" -->
 </template>
 
 <script lang="ts">
