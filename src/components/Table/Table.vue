@@ -36,7 +36,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="r in data" :key="r.id">
+      <tr v-for="r in filtered || records" :key="r.id">
         <td v-for="(h, i) in headers" :key="i">
           {{ r[i] }}
         </td>
@@ -63,7 +63,7 @@ import { defineComponent, ref } from 'vue'
 
 export default defineComponent({
   name: 'DataTable',
-  
+
   props: {
     id: {
       default: Math.random().toString(36).substring(2, 9),
@@ -136,23 +136,27 @@ export default defineComponent({
     },
     searchable: {
       type: [Boolean, String],
-      default: false,
+      default: 'name',
     },
   },
 
   emits: ['search'],
   setup(props, { emit }) {
-    const data: [] = ref(props.records)
+    const filtered = ref(props.records || [])
 
-    function doSearch(e: Event) {
-      const s = e.target.value
+    function doSearch(e: any) {
+      const s = e?.target?.value
 
-      if (props.searchable) {
-        data.value = data.value.filter((r: any) => s == r[props.searchable])
-      } else {
-        emit('search', s)
-      }
+      // if (props.records && (props.searchable !== false) && s) {
+      //   filtered.value = props.records.filter(
+      //     (r: any) => s == r[props.searchable],
+      //   )
+      // } else {
+      //   emit('search', s)
+      // }
     }
+
+    return { filtered }
   },
 })
 </script>

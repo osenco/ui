@@ -6,10 +6,10 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import Button from '../Button/Btn'
-import Badge from '../Badge/Badge'
-import Wrap from '../Containers/Wrap'
-import Container from '../Containers/Container'
+import Button from '../Button/Btn.vue'
+import Badge from '../Badge/Badge.vue'
+import Wrap from '../Containers/Wrap.vue'
+import Container from '../Containers/Container.vue'
 
 export default defineComponent({
   name: 'Ui',
