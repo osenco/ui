@@ -1,7 +1,7 @@
-import { App as Application } from "vue";
-import Figure from "./Figure.vue";
+import { App as Application } from 'vue';
+import Figure from './Figure.vue';
 
-import { registerComponent } from "./../../utils/plugins/index";
+import { registerComponent } from './../../utils/plugins/index';
 
 const Plugin = {
   install(vue: Application) {

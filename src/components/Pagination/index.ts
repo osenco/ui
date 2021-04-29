@@ -1,7 +1,7 @@
-import { App as Application } from "vue";
-import Paginate from "./Paginate.vue";
+import { App as Application } from 'vue';
+import Paginate from './Paginate.vue';
 
-import { registerComponent } from "./../../utils/plugins/index";
+import { registerComponent } from './../../utils/plugins/index';
 
 const Plugin = {
   install(vue: Application) {

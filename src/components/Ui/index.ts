@@ -1,7 +1,7 @@
-import { App as Application } from "vue";
-import Ui from "./Ui.vue";
+import { App as Application } from 'vue';
+import Ui from './Ui.vue';
 
-import { registerComponent } from "./../../utils/plugins/index";
+import { registerComponent } from './../../utils/plugins/index';
 
 const Plugin = {
   install(vue: Application) {

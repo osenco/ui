@@ -1,7 +1,7 @@
-import { App as Application } from "vue";
-import Icon from "./Icon.vue";
+import { App as Application } from 'vue';
+import Icon from './Icon.vue';
 
-import { registerComponent } from "./../../utils/plugins/index";
+import { registerComponent } from './../../utils/plugins/index';
 
 const Plugin = {
   install(vue: Application) {

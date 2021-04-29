@@ -1,8 +1,8 @@
-import { App as Application } from "vue";
-import Row from "./Row.vue";
-import Col from "./Column.vue";
+import { App as Application } from 'vue';
+import Row from './Row.vue';
+import Col from './Column.vue';
 
-import { registerComponent } from "./../../utils/plugins/index";
+import { registerComponent } from './../../utils/plugins/index';
 
 const Plugin = {
   install(vue: Application) {

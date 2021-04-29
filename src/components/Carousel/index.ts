@@ -1,8 +1,8 @@
-import { App as Application } from "vue";
-import Carousel from "./Carousel.vue";
-import CarouselItem from "./Carousel.vue";
+import { App as Application } from 'vue';
+import Carousel from './Carousel.vue';
+import CarouselItem from './Carousel.vue';
 
-import { registerComponent } from "./../../utils/plugins/index";
+import { registerComponent } from './../../utils/plugins/index';
 
 const Plugin = {
   install(vue: Application) {
