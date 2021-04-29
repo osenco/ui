@@ -25,6 +25,14 @@
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
 }
 
+body, #app, main, .container {
+  overflow-x: hidden;
+}
+
+.form-group {
+  margin-bottom: 7px;
+}
+
 .accordion-button:not(.collapsed), a {
   color: var(--bs-primary) !important;
 }

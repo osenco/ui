@@ -2,6 +2,7 @@
   <span
     class="badge"
     :class="{
+      'bg-primary': primary,
       'bg-dark': dark,
       'bg-light': light,
       'bg-info': info,
@@ -23,6 +24,10 @@ export default defineComponent({
   props: {
     id: {
       default: Math.random().toString(36).substring(2, 9),
+    },
+    primary: {
+      type: Boolean,
+      default: false,
     },
     dark: {
       type: Boolean,

@@ -1,25 +1,30 @@
 <template>
   <select
+    ref="select"
     class="form-control"
     :class="{ 'form-control-lg': sm, 'form-control-lg': lg }"
     :name="name"
+    :value="modelValue"
     :id="`select-multi-${name || id}`"
-    :value="value"
     v-bind="{
       ...$attrs,
-      onChange: updateValue(value, $event),
+      onChange: () => {
+        $emit('update:modelValue', this.value)
+      },
     }"
     multiple
   >
     <option
       v-for="(option, id) in options"
       :key="id"
-      :value="option.id || option.value || id"
+      :value="
+        option.id || option.value || typeof options === 'object' ? id : option
+      "
       :selected="
         modelValue.includes(option.id) ||
         modelValue.includes(option.value) ||
-        modelValue.includes(option) ||
-        modelValue.includes(id)
+        modelValue.includes(id) ||
+        modelValue.includes(option)
       "
     >
       {{ option.name || option.title || option.label || option }}
@@ -43,34 +48,17 @@ export default defineComponent({
     modelValue: {
       type: Array,
     },
-    value: {
-      type: [String, Number],
-      required: true,
+    options: {
+      type: [Array, Object],
     },
-  },
-
-  setup(props, { emit }) {
-    const selected: [] = ref(props.modelValue)
-
-    function updateValue(v: any, e: Event) {
-      const exists = selected.value.indexOf(v)
-
-      if (e.target.checked) {
-        if (exists === -1) {
-          selected.value.push(v)
-        }
-      } else {
-        if (exists !== -1) {
-          selected.value.splice(exists, 1)
-        }
-      }
-
-      emit('update:modelValue', selected)
-    }
-
-    return {
-      updateValue,
-    }
+    sm: {
+      type: Boolean,
+      default: false,
+    },
+    lg: {
+      type: Boolean,
+      default: false,
+    },
   },
 })
 </script>

@@ -5,12 +5,16 @@
     :class="{ 'form-control-lg': sm, 'form-control-lg': lg }"
     :autocomplete="autocomplete"
     :name="name"
-    :id="`${name}-${id}`"
+    :id="`${type}-${name}-${id}`"
     :value="modelValue"
     @input="$emit('update:modelValue', $event.target.value)"
     v-bind="$attrs"
   />
-  
+
+  <div :id="`${id}Help`" class="form-text" v-if="prompt">
+    {{ prompt }}
+  </div>
+
   <div class="valid-feedback" v-if="feedback?.valid">
     {{ feedback?.valid }}
   </div>
@@ -70,6 +74,10 @@ export default defineComponent({
     },
     feedback: {
       type: Object,
+    },
+    prompt: {
+      type: [Boolean, String],
+      default: false,
     },
   },
 

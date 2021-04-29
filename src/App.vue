@@ -1,12 +1,12 @@
 <template>
   <header>
-    <container>
+    <ui container>
       <nav-bar>
         <template #toggle>
           <drawer> </drawer>
         </template>
       </nav-bar>
-    </container>
+    </ui>
   </header>
 
   <main>
@@ -23,7 +23,8 @@
         </column>
 
         <column md="9" sm="12">
-          <wrap mt="2" >
+          <ui fluid d-lg="none" d-sm="block"> Go Drunk, You're Home </ui>
+          <wrap mt="2">
             <row>
               <column md="12">
                 <form-wrap validate>
@@ -42,6 +43,15 @@
                       :options="{ m: 'Male', f: 'Female' }"
                     />
                   </form-group>
+
+                  <form-group label="Job title">
+                    <form-multi-select
+                      name="gender"
+                      v-model="user.titles"
+                      :options="{ dr: 'Dr', lr: 'Lord' }"
+                    />
+                  </form-group>
+
                   <form-group label="Notify">
                     <form-check
                       name="notify"
@@ -91,6 +101,10 @@
                   <form-group label="Address">
                     <form-textarea name="address" v-model="user.address" />
                   </form-group>
+
+                  <form-group>
+                    <btn primary submit round> Submit Now </btn>
+                  </form-group>
                 </form-wrap>
                 <collapse
                   class="btn btn-rounded btn-primary mt-4"
@@ -122,8 +136,6 @@
                 </accordion>
               </column>
               <column md="6">
-                <btn primary submit round> Submit Now </btn>
-
                 <btn secondary button icon lg fab>
                   <icon name="arrow-up" />
                 </btn>
@@ -135,14 +147,15 @@
     </container>
   </main>
 
-  <footer class="footer my-4">
-    <container>
+  <footer class="footer">
+    <wrap :mt="4" :w="100" :mx="4">
       <p>&copy; {{ new Date().getFullYear() }} | Osen Concepts</p>
-    </container>
+    </wrap>
   </footer>
 </template>
 
 <script>
+import Ui from './components/Ui/Ui.vue'
 import Wrap from './components/Containers/Wrap.vue'
 import Container from './components/Containers/Container.vue'
 import Row from './components/Grid/Row.vue'
@@ -157,6 +170,7 @@ import FormWrap from './components/Form/Wrap.vue'
 import FormInput from './components/Form/Input.vue'
 import FormTextarea from './components/Form/Textarea.vue'
 import FormSelect from './components/Form/Select.vue'
+import FormMultiSelect from './components/Form/MultiSelect.vue'
 import FormCheck from './components/Form/Checkbox.vue'
 import FormCheckMulti from './components/Form/MultiCheckbox.vue'
 import FormRadio from './components/Form/Radio.vue'
@@ -178,6 +192,7 @@ import { reactive } from '@vue/reactivity'
 export default {
   name: 'App',
   components: {
+    Ui,
     Wrap,
     Container,
     FormWrap,
@@ -185,6 +200,7 @@ export default {
     FormInput,
     FormTextarea,
     FormSelect,
+    FormMultiSelect,
     FormCheck,
     FormCheckMulti,
     FormRadio,
@@ -211,6 +227,7 @@ export default {
       notify: false,
       activity: [],
       title: '',
+      titles: []
     })
 
     return { user }

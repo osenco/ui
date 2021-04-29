@@ -15,11 +15,14 @@
     <option
       v-for="(option, id) in options"
       :key="id"
-      :value="option.id || option.value || id"
+      :value="
+        option.id || option.value || typeof options === 'object' ? id : option
+      "
       :selected="
         option.id == modelValue ||
         option.value == modelValue ||
-        id == modelValue
+        id == modelValue ||
+        option == modelValue
       "
     >
       {{ option.name || option.title || option.label || option }}
