@@ -10,7 +10,9 @@ import './assets/styles/css/main.css'
 
 const app = createApp(App)
 
-app.mount('#app');
 for (const componentKey in components) {
-    app.component((components as any)[componentKey], (components as any)[componentKey]);
+  console.log((components as any)[componentKey])
+    app.component(componentKey, (components as any)[componentKey]);
 }
+
+app.mount('#app');

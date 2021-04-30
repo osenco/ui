@@ -52,6 +52,7 @@ export const themeData = {
   "selectLanguageText": "Languages",
   "selectLanguageAriaLabel": "Select language",
   "sidebar": "auto",
+  "sidebarDepth": 2,
   "editLink": true,
   "lastUpdated": true,
   "lastUpdatedText": "Last Updated",

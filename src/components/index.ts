@@ -3,7 +3,7 @@ import Avatar from './Avatar';
 import Badge from './Badge';
 import Button from './Button';
 import Breadcrumbs from './BreadCrumbs';
-import Card from './card';
+import Card from './Card';
 import Carousel from './Carousel';
 import Collapse from './Collapse';
 import Containers from './Containers';
