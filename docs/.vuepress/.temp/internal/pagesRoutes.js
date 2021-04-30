@@ -1,16 +1,60 @@
 import { Vuepress } from '@vuepress/client/lib/components/Vuepress'
-import pageRoutes0 from '/home/osen/Projects/Vue/ui/docs/.vuepress/.temp/internal/pageRoutes/v-8daa1a0e.js'
-import pageRoutes1 from '/home/osen/Projects/Vue/ui/docs/.vuepress/.temp/internal/pageRoutes/v-5d7259d4.js'
-import pageRoutes2 from '/home/osen/Projects/Vue/ui/docs/.vuepress/.temp/internal/pageRoutes/v-1020f180.js'
-import pageRoutes3 from '/home/osen/Projects/Vue/ui/docs/.vuepress/.temp/internal/pageRoutes/v-45da7438.js'
-import pageRoutes4 from '/home/osen/Projects/Vue/ui/docs/.vuepress/.temp/internal/pageRoutes/v-3706649a.js'
 
 export const pagesRoutes = [
-  ...pageRoutes0,
-  ...pageRoutes1,
-  ...pageRoutes2,
-  ...pageRoutes3,
-  ...pageRoutes4,
+  {
+    name: "v-8daa1a0e",
+    path: "/",
+    component: Vuepress,
+    meta: { title: "" },
+  },
+  {
+    path: "/index.html",
+    redirect: "/",
+  },
+  {
+    path: "/README.md",
+    redirect: "/",
+  },
+  {
+    name: "v-5d7259d4",
+    path: "/guide.html",
+    component: Vuepress,
+    meta: { title: "Getting Started" },
+  },
+  {
+    path: "/guide.md",
+    redirect: "/guide.html",
+  },
+  {
+    name: "v-1020f180",
+    path: "/components/",
+    component: Vuepress,
+    meta: { title: "Components" },
+  },
+  {
+    path: "/components/index.html",
+    redirect: "/components/",
+  },
+  {
+    path: "/components/README.md",
+    redirect: "/components/",
+  },
+  {
+    name: "v-45da7438",
+    path: "/components/container.html",
+    component: Vuepress,
+    meta: { title: "container" },
+  },
+  {
+    path: "/components/container.md",
+    redirect: "/components/container.html",
+  },
+  {
+    name: "v-3706649a",
+    path: "/404.html",
+    component: Vuepress,
+    meta: { title: "" },
+  },
   {
     name: "404",
     path: "/:catchAll(.*)",
