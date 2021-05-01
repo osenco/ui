@@ -42,6 +42,7 @@ import Progress from './Progress/Progress.vue'
 import Row from './Grid/Row.vue'
 import Spinner from './Spinner/Spinner.vue'
 import Toast from './Alert/Toast.vue'
+import ToastContainer from './Alert/ToastContainer.vue'
 import TabItem from './Nav/Tabs/TabItem.vue'
 import Tabs from './Nav/Tabs/Tabs.vue'
 import Ui from './Ui/Ui.vue'
@@ -94,6 +95,7 @@ export {
   TabItem,
   Tabs,
   Toast,
+  ToastContainer,
   Ui,
   Wrap
 }

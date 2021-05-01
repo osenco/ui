@@ -3,6 +3,7 @@
     <div
       class="progress-bar"
       :class="{
+        'bg-primary': primary,
         'bg-dark': dark,
         'bg-light': light,
         'bg-info': info,
@@ -11,12 +12,13 @@
         'bg-success': success,
         'bg-secondary': secondary,
         'progress-bar-striped': striped,
-        'progress-bar-animated': animated,
+        'progress-bar-animated': animate,
       }"
       role="progressbar"
-      aria-valuenow="now"
-      aria-valuemin="min"
-      aria-valuemax="max"
+      :aria-valuenow="now"
+      :aria-valuemin="min"
+      :aria-valuemax="max"
+      :style="`width:${width}%;`"
     >
       <slot></slot>
     </div>
@@ -24,21 +26,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
   props: {
     min: {
-      type: Number,
+      type: [Number, String],
       default: 0,
     },
     now: {
-      type: Number,
+      type: [Number, String],
       default: 0,
     },
     max: {
-      type: Number,
+      type: [Number, String],
       default: 100,
+    },
+    primary: {
+      type: Boolean,
+      default: false,
     },
     dark: {
       type: Boolean,
@@ -72,10 +78,18 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    animated: {
+    animate: {
       type: Boolean,
       default: false,
     },
+  },
+
+  setup(props) {
+    const width = computed(() => {
+      return (Number(props.now) / Number(props.max)) * 100
+    })
+
+    return { width }
   },
 })
 </script>

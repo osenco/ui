@@ -1,7 +1,8 @@
 <template>
   <div
-    class="toast"
+    class="toast position-relative"
     :class="{
+      'bg-primary': primary,
       'bg-dark': dark,
       'bg-light': light,
       'bg-info': info,
@@ -38,6 +39,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted } from 'vue'
+import { Toast } from 'bootstrap'
 
 export default defineComponent({
   name: 'Toast',
@@ -45,6 +47,10 @@ export default defineComponent({
   props: {
     id: {
       default: Math.random().toString(36).substring(2, 9),
+    },
+    primary: {
+      type: Boolean,
+      default: false,
     },
     dark: {
       type: Boolean,
@@ -79,16 +85,38 @@ export default defineComponent({
       default: 'Notification',
     },
     img: {
-      type: String
+      type: String,
     },
     time: {
       type: String,
       default: 'a few seconds ago',
     },
+    delay: {
+      type: [Number, String],
+      default: 5000,
+    },
+    animate: {
+      type: Boolean,
+      default: true,
+    },
+    autohide: {
+      type: Boolean,
+      default: true,
+    },
   },
 
   setup(props, { emit }) {
     onMounted(() => {
+      const toastEl = document.getElementById(`toast-${props.id}`)
+
+      const t = new Toast(toastEl, {
+        animated: props.animate,
+        autohide: props.autohide,
+        delay: props.delay,
+      })
+
+      t.show()
+
       const toast = document.getElementById(`toast-${props.id}`)
 
       toast?.addEventListener('hidden.bs.toast', function () {

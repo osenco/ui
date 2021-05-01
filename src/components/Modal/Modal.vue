@@ -4,6 +4,7 @@
       type="button"
       class="btn btn-primary"
       data-bs-toggle="modal"
+      :id="`modal-toggle-${id}`"
       :data-bs-target="`#modal-${id}`"
     >
       {{ toggleText }}
@@ -25,7 +26,7 @@
         'modal-sm': sm,
         'modal-lg': lg,
         'modal-xl': xl,
-        'modal-fullscreen':fullscreen,
+        'modal-fullscreen': fullscreen,
         'modal-dialog-centered': centered,
         'modal-dialog-scrollable': scrollable,
       }"
@@ -65,7 +66,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, onMounted } from 'vue'
+import { Modal } from 'bootstrap'
 
 export default defineComponent({
   props: {
@@ -78,8 +80,20 @@ export default defineComponent({
       default: 'btn btn-toggle',
     },
     backdrop: {
-      type: String,
-      default: 'none',
+      type: [String, Boolean],
+      default: true,
+    },
+    keyboard: {
+      type: Boolean,
+      default: true,
+    },
+    focus: {
+      type: Boolean,
+      default: true,
+    },
+    fullscreen: {
+      type: Boolean,
+      default: false,
     },
     title: {
       type: String,
@@ -112,10 +126,35 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    fullscreen: {
-      type: Boolean,
-      default: false,
-    },
+  },
+
+  emits: ['show', 'shown', 'hide', 'hidden', 'hidePrevented'],
+
+  setup(props, emit) {
+    onMounted(() => {
+      const modal = new Modal(document.getElementById(`modal-${props.id}`), {
+        keyboard: props.keyboard,
+        focus: props.focus,
+        backdrop: props.backdrop,
+      })
+
+      // const modalToggle = document.getElementById(`modal-toggle-${props.id}`) // relatedTarget
+      // modal.show(modalToggle)
+
+      // const modalEl = document.getElementById(props.id)
+      // modalEl?.addEventListener('show.bs.modal', function (event) {
+      //   emit('show')
+      // })
+      // modalEl?.addEventListener('shown.bs.modal', function (event) {
+      //   emit('shown')
+      // })
+      // modalEl?.addEventListener('hide.bs.modal', function (event) {
+      //   emit('hide')
+      // })
+      // modalEl?.addEventListener('hidden.bs.modal', function (event) {
+      //   emit('hidden')
+      // })
+    })
   },
 })
 </script>

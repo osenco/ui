@@ -2,6 +2,7 @@
   <div
     class="alert"
     :class="{
+      'alert-primary': primary,
       'alert-dark': dark,
       'alert-light': light,
       'alert-info': info,
@@ -22,6 +23,10 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'Alert',
   props: {
+    primary: {
+      type: Boolean,
+      default: false,
+    },
     dark: {
       type: Boolean,
       default: false,

@@ -9,6 +9,10 @@
     </ui>
   </header>
 
+  <toast-container bottom="0" end="0">
+    <ui toast title="Some Warning" mt="2"> Something went wrong! </ui>
+  </toast-container>
+
   <main>
     <container fluid px="4">
       <row>
@@ -24,11 +28,12 @@
 
         <column md="9" sm="12">
           <ui fluid d-lg="none" d-sm="block"> Go Drunk, You're Home </ui>
-          <modal title="Add New User" lg>
+          <modal title="Add New User" sm>
             <form-wrap>
-              <form-group label="Name" input name="fullname" />
+              <form-group mb="3" sm label="Name" input name="fullname" />
             </form-wrap>
           </modal>
+
           <wrap mt="2">
             <row>
               <column md="12">
@@ -119,6 +124,9 @@
                     <form-input email name="email" v-model="user.email" />
                   </form-group>
                 </collapse>
+
+                <ui alert danger mt="2"> Something went wrong! </ui>
+                <ui progress now="46" dark striped animate>46%</ui>
               </column>
 
               <column md="6" class="mt-2">
@@ -176,7 +184,7 @@ export default {
       notify: false,
       activity: [],
       title: '',
-      titles: []
+      titles: [],
     })
 
     return { user }
