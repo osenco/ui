@@ -2,7 +2,7 @@
   <input
     type="color"
     class="form-control form-control-color"
-    :class="{ 'form-control-lg': sm, 'form-control-lg': lg }"
+    :class="{ 'form-control-sm': sm, 'form-control-lg': lg }"
     :title="title"
     :name="name"
     :id="`${type}-${name}-${id}`"
@@ -29,8 +29,8 @@ export default defineComponent({
       type: String,
     },
     title: {
-        type: String,
-        default: 'Choose your color'
+      type: String,
+      default: 'Choose your color',
     },
     id: {
       type: String,

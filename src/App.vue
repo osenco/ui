@@ -1,11 +1,11 @@
 <template>
   <header>
     <ui container>
-      <nav-bar>
+      <navbar>
         <template #toggle>
           <drawer> </drawer>
         </template>
-      </nav-bar>
+      </navbar>
     </ui>
   </header>
 
@@ -24,6 +24,11 @@
 
         <column md="9" sm="12">
           <ui fluid d-lg="none" d-sm="block"> Go Drunk, You're Home </ui>
+          <modal title="Add New User" lg>
+            <form-wrap>
+              <form-group label="Name" input name="fullname" />
+            </form-wrap>
+          </modal>
           <wrap mt="2">
             <row>
               <column md="12">
@@ -155,66 +160,10 @@
 </template>
 
 <script>
-import Ui from './components/Ui/Ui.vue'
-import Wrap from './components/Containers/Wrap.vue'
-import Container from './components/Containers/Container.vue'
-import Row from './components/Grid/Row.vue'
-import Column from './components/Grid/Column.vue'
-import FormGroup from './components/Form/FormGroup.vue'
-
-import Btn from './components/Button/Btn.vue'
-
-import Avatar from './components/Avatar/Avatar.vue'
-
-import FormWrap from './components/Form/Wrap.vue'
-import FormInput from './components/Form/Input.vue'
-import FormTextarea from './components/Form/Textarea.vue'
-import FormSelect from './components/Form/Select.vue'
-import FormMultiSelect from './components/Form/MultiSelect.vue'
-import FormCheck from './components/Form/Checkbox.vue'
-import FormCheckMulti from './components/Form/MultiCheckbox.vue'
-import FormRadio from './components/Form/Radio.vue'
-
-import Collapse from './components/Collapse/Collapse.vue'
-
-import Tabs from './components/Nav/Tabs/Tabs.vue'
-import TabItem from './components/Nav/Tabs/TabItem.vue'
-
-import Drawer from './components/Nav/Drawer.vue'
-import NavBar from './components/Nav/Navbar.vue'
-
-import Icon from './components/Icon/Icon.vue'
-
-import Accordion from './components/Collapse/Accordion.vue'
-import AccordionItem from './components/Collapse/AccordionItem.vue'
-import { reactive } from '@vue/reactivity'
+import { reactive } from 'vue'
 
 export default {
   name: 'App',
-  // components: {
-  //   Ui,
-  //   Wrap,
-  //   Container,
-  //   FormWrap,
-  //   FormGroup,
-  //   FormInput,
-  //   FormTextarea,
-  //   FormSelect,
-  //   FormMultiSelect,
-  //   FormCheck,
-  //   FormCheckMulti,
-  //   FormRadio,
-  //   Row,
-  //   Column,
-  //   Collapse,
-  //   Drawer,
-  //   NavBar,
-  //   AccordionItem,
-  //   Accordion,
-  //   Btn,
-  //   Icon,
-  //   Avatar,
-  // },
 
   setup() {
     const user = reactive({

@@ -24,13 +24,27 @@ import Table from './Table'
 import Ui from './Ui'
 
 export {
-    Alert, Avatar, Badge,
-    Button, Breadcrumbs,
-    Card, Carousel, Collapse,
-    Containers, Display,
-    Dropdown, Figure, Form,
-    Grid, Icon, Link,
-    ListGroup, Modal, Nav,
-    Pagination, Progress,
-    Spinner, Table, Ui
+    Alert,
+    Avatar,
+    Badge,
+    Button,
+    Breadcrumbs,
+    Card,
+    Carousel,
+    Collapse,
+    Containers,
+    Display,
+    Dropdown,
+    Figure,
+    Form,
+    Grid,
+    Icon,
+    Link,
+    ListGroup,
+    Modal,
+    Nav,
+    Pagination,
+    Progress,
+    Spinner,
+    Table, Ui
 };

@@ -11,10 +11,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import Radio from "./Radio.vue"
 
 export default defineComponent({
-    components: [Radio],
     props: {
     inline: {
       type: Boolean,

@@ -1,7 +1,7 @@
 <template>
   <textarea
     class="form-control"
-    :class="{ 'form-control-lg': sm, 'form-control-lg': lg }"
+    :class="{ 'form-control-sm': sm, 'form-control-lg': lg }"
     :autocomplete="autocomplete"
     :name="name"
     :id="`${name}-${id}`"

@@ -2,7 +2,7 @@
   <input
     type="file"
     class="form-control"
-    :class="{ 'form-control-lg': sm, 'form-control-lg': lg }"
+    :class="{ 'form-control-sm': sm, 'form-control-lg': lg }"
     :name="name"
     :id="`${name || id}`"
     :value="modelValue"
@@ -32,8 +32,8 @@ export default defineComponent({
     },
     modelValue: {
       type: Number,
-      default: 0
-    }
+      default: 0,
+    },
   },
 })
 </script>

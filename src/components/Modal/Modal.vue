@@ -6,14 +6,14 @@
       data-bs-toggle="modal"
       :data-bs-target="`#modal-${id}`"
     >
-            {{ title }}
+      {{ toggleText }}
     </button>
   </slot>
 
   <div
+    :id="`modal-${id}`"
     class="modal fade"
     :class="{ show: active }"
-    :id="`modal-${id}`"
     :data-bs-backdrop="backdrop"
     tabindex="-1"
     :aria-labelledby="`modal-${id}-label`"
@@ -22,6 +22,10 @@
     <div
       class="modal-dialog"
       :class="{
+        'modal-sm': sm,
+        'modal-lg': lg,
+        'modal-xl': xl,
+        'modal-fullscreen':fullscreen,
         'modal-dialog-centered': centered,
         'modal-dialog-scrollable': scrollable,
       }"
@@ -47,12 +51,12 @@
         <div class="modal-footer">
           <slot name="footer">
             <button
-            type="button"
-            class="btn btn-secondary"
-            data-bs-dismiss="modal"
-          >
-            Close
-          </button>
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
           </slot>
         </div>
       </div>
@@ -81,6 +85,7 @@ export default defineComponent({
       type: String,
     },
     id: {
+      type: [Number, String],
       default: Math.random().toString(36).substring(2, 9),
     },
     active: {
@@ -92,6 +97,22 @@ export default defineComponent({
       default: false,
     },
     scrollable: {
+      type: Boolean,
+      default: false,
+    },
+    sm: {
+      type: Boolean,
+      default: false,
+    },
+    lg: {
+      type: Boolean,
+      default: false,
+    },
+    xl: {
+      type: Boolean,
+      default: false,
+    },
+    fullscreen: {
       type: Boolean,
       default: false,
     },

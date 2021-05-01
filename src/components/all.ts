@@ -19,12 +19,16 @@ import Container from './Containers/Container.vue'
 import DataTable from './Table/Table.vue'
 import Drawer from './Nav/Drawer.vue'
 import Figure from './Figure/Figure.vue'
-import FormCheckbox from './Form/Checkbox.vue'
+import FormCheck from './Form/Checkbox.vue'
 import FormGroup from './Form/FormGroup.vue'
 import FormFloating from './Form/FormFloating.vue'
-// import FormRadio from './Form/FormRadio.vue'
+import FormCheckMulti from './Form/MultiCheckbox.vue'
+import FormRadio from './Form/Radio.vue'
+import FormSelect from './Form/Select.vue'
 import FormWrap from './Form/Wrap.vue'
 import FormInput from './Form/Input.vue'
+import FormMultiSelect from './Form/MultiSelect.vue'
+import FormTextarea from './Form/Textarea.vue'
 import HidePrint from './Display/HidePrint.vue'
 import Icon from './Icon/Icon.vue'
 import ListGroup from './ListGroup/ListGroup.vue'
@@ -41,6 +45,7 @@ import Toast from './Alert/Toast.vue'
 import TabItem from './Nav/Tabs/TabItem.vue'
 import Tabs from './Nav/Tabs/Tabs.vue'
 import Ui from './Ui/Ui.vue'
+import Wrap from './Containers/Wrap.vue'
 
 export {
   Accordion,
@@ -64,11 +69,15 @@ export {
   DataTable,
   Drawer,
   Figure,
-  FormCheckbox,
+  FormCheck,
+  FormCheckMulti,
+  FormMultiSelect,
+  FormTextarea,
   FormGroup,
   FormFloating,
   FormInput,
-  // FormRadio,
+  FormSelect,
+  FormRadio,
   FormWrap,
   HidePrint,
   Icon,
@@ -86,4 +95,5 @@ export {
   Tabs,
   Toast,
   Ui,
+  Wrap
 }
