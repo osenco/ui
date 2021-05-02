@@ -1,13 +1,19 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <span class="screen-darken"></span>
+  <nav
+    id="navbar_main"
+    class="mobile-offcanvas navbar navbar-expand-lg navbar-dark bg-primary"
+  >
     <div class="container-fluid">
+      <div class="offcanvas-header">
+        <button class="btn-close float-end"></button>
+      </div>
+
       <slot name="toggle">
         <button
-          class="btn btn-primary"
+          data-bs-trigger="navbar_main"
+          class="d-lg-none btn btn-warning"
           type="button"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#offcanvasExample"
-          aria-controls="offcanvasExample"
         >
           <slot name="toggle">Menu</slot>
         </button>
@@ -16,20 +22,19 @@
       <slot name="brand">
         <a class="navbar-brand" href="/">
           <img
-            src="../../assets/logo.png"
-            alt=""
+            :src="logo || '../../assets/logo.png'"
+            :alt="title"
             width="30"
             height="24"
             class="d-inline-block align-text-top"
           />
-          Osen UI
+          {{ title || 'Osen UI' }}
         </a>
       </slot>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <slot></slot>
-      </div>
+      <slot></slot>
     </div>
+    <!-- container-fluid.// -->
   </nav>
 </template>
 
@@ -40,7 +45,56 @@ export default defineComponent({
   props: {
     title: {
       type: String,
+    },
+    logo: {
+      type: String,
+    },
+  },
+
+  setup() {
+    function darken_screen(yesno) {
+      if (yesno == true) {
+        document.querySelector('.screen-darken').classList.add('active')
+      } else if (yesno == false) {
+        document.querySelector('.screen-darken').classList.remove('active')
+      }
     }
+
+    function close_offcanvas() {
+      darken_screen(false)
+      document.querySelector('.mobile-offcanvas.show').classList.remove('show')
+      document.body.classList.remove('offcanvas-active')
+    }
+
+    function show_offcanvas(offcanvas_id) {
+      darken_screen(true)
+      document.getElementById(offcanvas_id).classList.add('show')
+      document.body.classList.add('offcanvas-active')
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document
+        .querySelectorAll('[data-bs-trigger]')
+        .forEach(function (everyelement) {
+          let offcanvas_id = everyelement.getAttribute('data-bs-trigger')
+          everyelement.addEventListener('click', function (e) {
+            e.preventDefault()
+            show_offcanvas(offcanvas_id)
+          })
+        })
+
+      document.querySelectorAll('.btn-close').forEach(function (everybutton) {
+        everybutton.addEventListener('click', function (e) {
+          close_offcanvas()
+        })
+      })
+
+      document
+        .querySelector('.screen-darken')
+        .addEventListener('click', function (event) {
+          close_offcanvas()
+        })
+    })
   },
 })
 </script>
