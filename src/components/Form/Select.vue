@@ -1,41 +1,26 @@
 <template>
-  <select
-    class="form-control"
+  <multiselect
     :class="{ 'form-control-sm': sm, 'form-control-lg': lg }"
     :name="name"
-    :id="`select-${name || id}`"
-    :value="modelValue"
-    v-bind="{
-      ...$attrs,
-      onChange: ($event) => {
-        $emit('update:modelValue', $event.target.value)
-      },
-    }"
-  >
-    <option
-      v-for="(option, id) in options"
-      :key="id"
-      :value="
-        option.id || option.value || typeof options === 'object' ? id : option
-      "
-      :selected="
-        option.id == modelValue ||
-        option.value == modelValue ||
-        id == modelValue ||
-        option == modelValue
-      "
-    >
-      {{ option.name || option.title || option.label || option }}
-    </option>
-  </select>
+    :id="`select-multi-${name || id}`"
+    v-bind="$attrs"
+  />
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
+import Multiselect from '@vueform/multiselect'
 
 export default defineComponent({
   name: 'FormSelect',
+  components: { Multiselect },
   props: {
+    name: {
+      type: String,
+    },
+    id: {
+      default: Math.random().toString(36).substring(2, 9),
+    },
     sm: {
       type: Boolean,
       default: false,
@@ -44,20 +29,8 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    name: {
-      type: String,
-    },
-    id: {
-      default: Math.random().toString(36).substring(2, 9),
-    },
-    options: {
-      type: [Array, Object],
-      required: true,
-    },
-    modelValue: {
-      type: [String, Number],
-      default: '',
-    },
   },
 })
 </script>
+
+<style src="@vueform/multiselect/themes/default.css"></style>

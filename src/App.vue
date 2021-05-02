@@ -1,14 +1,4 @@
 <template>
-  <header>
-    <ui container>
-      <navbar>
-        <template #toggle>
-          <drawer> </drawer>
-        </template>
-      </navbar>
-    </ui>
-  </header>
-
   <toast-container bottom="0" end="0">
     <ui toast title="Some Warning" mt="2"> Something went wrong! </ui>
   </toast-container>
@@ -16,7 +6,7 @@
   <main>
     <container fluid px="4">
       <row>
-        <column md="3" d="none" d-sm="block">
+        <column md="2" d="none" d-sm="block">
           <avatar
             :subject="user"
             image="./assets/logo.png"
@@ -26,15 +16,24 @@
           {{ user }}
         </column>
 
-        <column md="9" sm="12">
-          <ui fluid d-lg="none" d-sm="block"> Go Drunk, You're Home </ui>
-          <modal title="Add New User" sm>
-            <form-wrap>
-              <form-group mb="3" sm label="Name" input name="fullname" />
-            </form-wrap>
-          </modal>
+        <column md="10" sm="12">
+          <header>
+            <ui fluid>
+              <navbar>
+                <template #toggle>
+                  <drawer> </drawer>
+                </template>
+              </navbar>
+            </ui>
+          </header>
 
           <wrap mt="2">
+            <ui fluid d-lg="none" d-sm="block"> Go Drunk, You're Home </ui>
+            <modal title="Add New User" sm>
+              <form-wrap>
+                <form-group mb="3" sm label="Name" input name="fullname" />
+              </form-wrap>
+            </modal>
             <row>
               <column md="12">
                 <form-wrap validate>
@@ -56,7 +55,8 @@
 
                   <form-group label="Job title">
                     <form-multi-select
-                      name="gender"
+                      multiple
+                      name="titles"
                       v-model="user.titles"
                       :options="{ dr: 'Dr', lr: 'Lord' }"
                     />
@@ -148,10 +148,39 @@
                   </accordion-item>
                 </accordion>
               </column>
-              <column md="6">
+              <ui col md="6" mt="2">
+                <btn dark> Dark Button </btn>
+                <br />
+                <btn light> Light Button </btn>
+                <br />
+                <spinner />
+                <br />
+                <ui spinner grow />
+                <br />
+                <btn primary>
+                  <spinner sm /> <span>Spinner In Button</span>
+                </btn>
                 <btn secondary button icon lg fab>
                   <icon name="arrow-up" />
                 </btn>
+              </ui>
+
+              <column md="12">
+                <ui
+                  table
+                  mt="3"
+                  caption="Updated a few seconds ago"
+                  border="2"
+                  :headers="{ id: 'ID', status: 'Status', message: 'Message' }"
+                  :records="sessions.data"
+                />
+
+                <ui
+                  paginate
+                  :data="sessions"
+                  @change="fetchData"
+                  position="center"
+                />
               </column>
             </row>
           </wrap>
@@ -167,10 +196,11 @@
   </footer>
 </template>
 
-<script>
-import { reactive } from 'vue'
+<script lang="ts">
+import { defineComponent, onBeforeMount, reactive, ref } from 'vue'
+import axios from 'axios'
 
-export default {
+export default defineComponent({
   name: 'App',
 
   setup() {
@@ -187,7 +217,21 @@ export default {
       titles: [],
     })
 
-    return { user }
+    const sessions = ref({})
+
+    function fetchData(page = 1) {
+      axios
+        .get(`http://telemedke.herokuapp.com/api/sessions?page=${page}`)
+        .then((res: any) => {
+          sessions.value = res.data
+        })
+    }
+
+    onBeforeMount(() => {
+      fetchData()
+    })
+
+    return { user, sessions, fetchData }
   },
-}
+})
 </script>

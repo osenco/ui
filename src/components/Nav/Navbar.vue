@@ -1,23 +1,10 @@
 <template>
   <span class="screen-darken"></span>
-  <nav
-    id="navbar_main"
-    class="mobile-offcanvas navbar navbar-expand-lg navbar-dark bg-primary"
-  >
+  <nav id="navbar_main" class="mobile-offcanvas navbar navbar-expand-lg">
     <div class="container-fluid">
       <div class="offcanvas-header">
         <button class="btn-close float-end"></button>
       </div>
-
-      <slot name="toggle">
-        <button
-          data-bs-trigger="navbar_main"
-          class="d-lg-none btn btn-warning"
-          type="button"
-        >
-          <slot name="toggle">Menu</slot>
-        </button>
-      </slot>
 
       <slot name="brand">
         <a class="navbar-brand" href="/">
@@ -32,9 +19,18 @@
         </a>
       </slot>
 
+      <slot name="toggle">
+        <button
+          data-bs-trigger="navbar_main"
+          class="d-lg-none btn btn-warning"
+          type="button"
+        >
+          <slot name="toggle">Menu</slot>
+        </button>
+      </slot>
+
       <slot></slot>
     </div>
-    <!-- container-fluid.// -->
   </nav>
 </template>
 

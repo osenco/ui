@@ -180,6 +180,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    col: {
+      type: Boolean,
+      default: false,
+    },
     collapse: {
       type: Boolean,
       default: false,
@@ -502,7 +506,7 @@ export default defineComponent({
         ? CarouselItem
         : props.card
         ? Card
-        : props.col
+        : props.col || props.column
         ? Column
         : props.collapse
         ? Collapse

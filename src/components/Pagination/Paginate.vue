@@ -1,7 +1,8 @@
 <template>
   <nav aria-label="Page Nav">
     <ul
-      class="pagination pagination-borderless pagination-primary justify-content-end mr-4"
+      class="pagination pagination-borderless pagination-primary"
+      :class="`justify-content-${position}`"
     >
       <li class="page-item first" :class="{ disabled: isFirstPage }">
         <a
@@ -117,9 +118,13 @@ export default defineComponent({
       type: String,
       default: 'Go to last page',
     },
+    position: {
+      type: String,
+      default: 'start',
+    },
   },
 
-  emits: ['changed'],
+  emits: ['change'],
 
   setup(props, { emit }) {
     const firstPage = computed(() => {
@@ -158,23 +163,23 @@ export default defineComponent({
     })
 
     function onClickFirstPage() {
-      emit('changed', 1)
+      emit('change', 1)
     }
 
     function onClickPreviousPage() {
-      emit('changed', props.data?.current_page - 1)
+      emit('change', props.data?.current_page - 1)
     }
 
     function onClickPage(page = 1) {
-      emit('changed', page)
+      emit('change', page)
     }
 
     function onClickNextPage() {
-      emit('changed', props.data?.current_page + 1)
+      emit('change', props.data?.current_page + 1)
     }
 
     function onClickLastPage() {
-      emit('changed', props.data?.last_page)
+      emit('change', props.data?.last_page)
     }
 
     function isCurrent(page = 1) {

@@ -3,6 +3,7 @@
     class="table"
     :class="{
       'table-sm': sm,
+      'table-primary': primary,
       'table-dark': dark,
       'table-light': light,
       'table-info': info,
@@ -24,6 +25,7 @@
       }}
     </caption>
     <thead
+    class="thead"
       :class="{
         'table-dark': head == 'dark',
         'table-light': head == 'light',
@@ -36,7 +38,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="r in filtered || records" :key="r.id">
+      <tr v-for="r in records" :key="r.id">
         <td v-for="(h, i) in headers" :key="i">
           {{ r[i] }}
         </td>
@@ -69,6 +71,10 @@ export default defineComponent({
       default: Math.random().toString(36).substring(2, 9),
     },
     sm: {
+      type: Boolean,
+      default: false,
+    },
+    primary: {
       type: Boolean,
       default: false,
     },
@@ -136,13 +142,13 @@ export default defineComponent({
     },
     searchable: {
       type: [Boolean, String],
-      default: 'name',
+      default: false,
     },
   },
 
   emits: ['search'],
   setup(props, { emit }) {
-    const filtered = ref(props.records || [])
+    const filtered = ref([])
 
     function doSearch(e: any) {
       const s = e?.target?.value

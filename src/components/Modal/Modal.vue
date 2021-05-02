@@ -7,7 +7,7 @@
       :id="`modal-toggle-${id}`"
       :data-bs-target="`#modal-${id}`"
     >
-      {{ toggleText }}
+      {{ toggleText || title }}
     </button>
   </slot>
 
@@ -73,7 +73,6 @@ export default defineComponent({
   props: {
     toggleText: {
       type: String,
-      default: 'Toggle',
     },
     toggleClass: {
       type: String,
