@@ -97,6 +97,17 @@ export default defineComponent({
     data: {
       type: Object,
       required: true,
+      default: function () {
+        return {
+          current_page: 1,
+          data: [],
+          from: 1,
+          last_page: 8,
+          per_page: 10,
+          to: 10,
+          total: 78,
+        }
+      },
     },
     firstLabel: {
       type: String,
@@ -126,79 +137,79 @@ export default defineComponent({
 
   emits: ['change'],
 
-  setup(props, { emit }) {
-    const firstPage = computed(() => {
-      if (props.data?.current_page === 1) {
-        return 1
-      }
+  // setup(props, { emit }) {
+  //   const firstPage = computed(() => {
+  //     if (props.data?.current_page === 1) {
+  //       return 1
+  //     }
 
-      if (props.data?.current_page === props.data?.last_page) {
-        return props.data?.last_page - props.max + 1
-      }
+  //     if (props.data?.current_page === props.data?.last_page) {
+  //       return props.data?.last_page - props.max + 1
+  //     }
 
-      return props.data?.current_page - 1
-    })
+  //     return props.data?.current_page - 1
+  //   })
 
-    const lastPage = computed(() => {
-      return Math.min(firstPage.value + props.max - 1, props.data?.last_page)
-    })
+  //   const lastPage = computed(() => {
+  //     return Math.min(firstPage.value + props.max - 1, props.data?.last_page)
+  //   })
 
-    const pages = computed(() => {
-      const range = []
-      for (let i = firstPage.value; i <= lastPage.value; i += 1) {
-        range.push({
-          name: i,
-          isDisabled: i === props.data?.current_page,
-        })
-      }
-      return range
-    })
+  //   const pages = computed(() => {
+  //     const range = []
+  //     for (let i = firstPage.value; i <= lastPage.value; i += 1) {
+  //       range.push({
+  //         name: i,
+  //         isDisabled: i === props.data?.current_page,
+  //       })
+  //     }
+  //     return range
+  //   })
 
-    const isFirstPage = computed(() => {
-      return props.data?.current_page === 1
-    })
+  //   const isFirstPage = computed(() => {
+  //     return props.data?.current_page === 1
+  //   })
 
-    const isLastPage = computed(() => {
-      return props.data?.current_page === props.data?.last_page
-    })
+  //   const isLastPage = computed(() => {
+  //     return props.data?.current_page === props.data?.last_page
+  //   })
 
-    function onClickFirstPage() {
-      emit('change', 1)
-    }
+  //   function onClickFirstPage() {
+  //     emit('change', 1)
+  //   }
 
-    function onClickPreviousPage() {
-      emit('change', props.data?.current_page - 1)
-    }
+  //   function onClickPreviousPage() {
+  //     emit('change', props.data?.current_page - 1)
+  //   }
 
-    function onClickPage(page = 1) {
-      emit('change', page)
-    }
+  //   function onClickPage(page = 1) {
+  //     emit('change', page)
+  //   }
 
-    function onClickNextPage() {
-      emit('change', props.data?.current_page + 1)
-    }
+  //   function onClickNextPage() {
+  //     emit('change', props.data?.current_page + 1)
+  //   }
 
-    function onClickLastPage() {
-      emit('change', props.data?.last_page)
-    }
+  //   function onClickLastPage() {
+  //     emit('change', props.data?.last_page)
+  //   }
 
-    function isCurrent(page = 1) {
-      return props.data?.current_page === page
-    }
+  //   function isCurrent(page = 1) {
+  //     return props.data?.current_page === page
+  //   }
 
-    return {
-      firstPage,
-      lastPage,
-      pages,
-      isFirstPage,
-      isLastPage,
-      onClickFirstPage,
-      onClickPreviousPage,
-      onClickPage,
-      onClickNextPage,
-      onClickLastPage,
-      isCurrent,
-    }
-  },
+  //   return {
+  //     firstPage,
+  //     lastPage,
+  //     pages,
+  //     isFirstPage,
+  //     isLastPage,
+  //     onClickFirstPage,
+  //     onClickPreviousPage,
+  //     onClickPage,
+  //     onClickNextPage,
+  //     onClickLastPage,
+  //     isCurrent,
+  //   }
+  // },
 })
 </script>

@@ -1,6 +1,6 @@
 {
   "name": "@osenco/ui",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "unpkg": "dist/ui.min.js",

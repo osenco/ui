@@ -1,11 +1,10 @@
 <template>
-  <div class="toast-container position-absolute p-3" :class="classes">
+  <div class="toast-container position-absolute" :class="classes">
     <slot></slot>
   </div>
 </template>
 <script lang="ts">
-import { computed, defineComponent, onMounted } from 'vue'
-import { Toast } from 'bootstrap'
+import { computed, defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'ToastContainer',
@@ -30,7 +29,7 @@ export default defineComponent({
 
   setup(props) {
     const classes = computed(() => {
-      const c = []
+      const c = ['p-3']
 
       if (props.top) {
         c.push(`top-${props.top}`)
